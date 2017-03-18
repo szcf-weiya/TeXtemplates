@@ -1,0 +1,15 @@
+[0] Config.pm:340> INFO - This is Biber 2.4
+[0] Config.pm:343> INFO - Logfile is 'pre.blg'
+[35] biber:287> INFO - === 六 3月 18, 2017, 14:08:25
+[118] Biber.pm:348> INFO - Reading 'pre.bcf'
+[251] Biber.pm:739> INFO - Using all citekeys in bib section 0
+[256] Biber.pm:3151> INFO - Processing section 0
+[284] Biber.pm:3308> INFO - Looking for bibtex format file './ref.bib' for section 0
+[288] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
+[292] bibtex.pm:974> INFO - Found BibTeX data source './ref.bib'
+[366] UCollate.pm:65> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[366] UCollate.pm:65> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[366] Biber.pm:3028> INFO - Sorting list 'nty/global' of type 'entry' with scheme 'nty' and locale 'en-GB'
+[366] Biber.pm:3032> INFO - No sort tailoring available for locale 'en-GB'
+[372] bbl.pm:519> INFO - Writing 'pre.bbl' with encoding 'UTF-8'
+[384] bbl.pm:615> INFO - Output to pre.bbl
