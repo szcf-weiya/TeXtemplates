@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.3.8)  18 MAR 2017 14:15
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.3.8)  28 MAR 2017 22:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2343,7 +2343,7 @@ File: logo_zju.png Graphic file (type QTm)
 ]
 File: ps.png Graphic file (type QTm)
  <use  "ps.png" >
-Overfull \vbox (265.68814pt too high) detected at line 205
+Overfull \vbox (259.19464pt too high) detected at line 205
  []
 
 File: background2.pdf Graphic file (type QTm)
@@ -2360,20 +2360,6 @@ File: logo_zju.png Graphic file (type QTm)
 File: Markowitz_frontier.jpg Graphic file (type QTm)
 
 <use  "Markowitz_frontier.jpg" >
-Overfull \vbox (2.30594pt too high) detected at line 213
- []
-
-File: background2.pdf Graphic file (type QTm)
-<use  "background2.pdf" >
-.................................................
-. fontspec info: "no-scripts"
-. 
-. Font LHANDW.TTF does not contain any OpenType `Script' information.
-.................................................
-File: logo_zju.png Graphic file (type QTm)
- <use  "logo_zju.png" > [9
-
-]
 File: background2.pdf Graphic file (type QTm)
  <use  "background2.pdf" >
 .................................................
@@ -2383,7 +2369,7 @@ File: background2.pdf Graphic file (type QTm)
 .................................................
 File: logo_zju.png Graphic file (type QTm)
 
-<use  "logo_zju.png" > [10
+<use  "logo_zju.png" > [9
 
 ]
 File: background2.pdf Graphic file (type QTm)
@@ -2395,11 +2381,23 @@ File: background2.pdf Graphic file (type QTm)
 .................................................
 File: logo_zju.png Graphic file (type QTm)
  <use  "logo_zju.png" >
-[11
+[10
 
 ]
 File: background2.pdf Graphic file (type QTm)
  <use  "background2.pdf" >
+.................................................
+. fontspec info: "no-scripts"
+. 
+. Font LHANDW.TTF does not contain any OpenType `Script' information.
+.................................................
+File: logo_zju.png Graphic file (type QTm)
+ <use  "logo_zju.png" > [11
+
+]
+File: background2.pdf Graphic file (type QTm)
+
+<use  "background2.pdf" >
 .................................................
 . fontspec info: "no-scripts"
 . 
@@ -2785,37 +2783,10 @@ File: logo_zju.png Graphic file (type QTm)
  <use  "logo_zju.png" > [43
 
 ]
-File: beamericonarticle.pdf Graphic file (type QTm)
 
-<use  "beamericonarticle.pdf" >
-LaTeX Font Info:    Font shape `EU1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `EU1/lmss/m/sl' tried instead on input line 312.
+LaTeX Warning: Empty bibliography on input line 312.
 
-
-*************************************************
-* xeCJK warning: "CJKfamily-Unknown"
-* 
-* Unknown CJK family `\CJKttdefault' is being ignored.
-* 
-* Try to use `\setCJKmonofont[...]{...}' to define it.
-*************************************************
-LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 312
-.
-(/usr/share/texlive/texmf-dist/tex/latex/euenc/eu1lmtt.fd
-File: eu1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-File: beamericonarticle.pdf Graphic file (type QTm)
-
-<use  "beamericonarticle.pdf" >
-File: beamericonarticle.pdf Graphic file (type QTm)
- <use  "beamericonarticle.pdf" >
-File: beamericonarticle.pdf Graphic file (type QTm)
-
-<use  "beamericonarticle.pdf" >
-File: beamericonarticle.pdf Graphic file (type QTm)
- <use  "beamericonarticle.pdf" >
 File: background2.pdf Graphic file (type QTm)
-
 <use  "background2.pdf" >
 .................................................
 . fontspec info: "no-scripts"
@@ -2867,11 +2838,11 @@ Package logreq Info: Writing requests to 'pre.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 316.
  ) 
 Here is how much of TeX's memory you used:
- 43421 strings out of 493638
- 829948 string characters out of 6146797
- 1189616 words of memory out of 5000000
- 46120 multiletter control sequences out of 15000+600000
- 9313 words of font info for 79 fonts, out of 8000000 for 9000
+ 43216 strings out of 493638
+ 825590 string characters out of 6146797
+ 1186616 words of memory out of 5000000
+ 45922 multiletter control sequences out of 15000+600000
+ 9297 words of font info for 77 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  56i,20n,72p,10373b,1597s stack positions out of 5000i,500n,10000p,200000b,80000s
 

@@ -1,0 +1,562 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\headheight}{15pt}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{tabu}
+\usepackage{diagbox}
+\usepackage{longtable}
+\usepackage{float}
+
+\usepackage{url}
+\tabcolsep20pt
+\geometry{a4paper, 
+total={210mm,297mm},
+left=31.8mm,
+right=31.8mm,
+top=25.4mm,
+bottom=25.4mm,
+}
+\definecolor{cred}{rgb}{0.6,0,0}
+\definecolor{cgreen}{rgb}{0.25,0.5,0.35}
+\definecolor{cpurple}{rgb}{0.5,0,0.35}
+\definecolor{cdocblue}{rgb}{0.25,0.35,0.75}
+\definecolor{cdark}{rgb}{0.95,1.0,1.0}
+\lstset{
+language=C,
+numbers=left,
+numberstyle=\tiny\color{black},
+basicstyle={\footnotesize}\ttfamily\consolas,
+keywordstyle=\color{cdocblue}\bfseries\consolas,
+commentstyle=\color{cgreen}\consolas,
+stringstyle=\color{cred}\consolas,
+frame=lines,
+escapeinside=``,
+xleftmargin=1em,
+xrightmargin=1em, 
+backgroundcolor=\color{cdark},
+aboveskip=1em,
+breaklines=true,
+tabsize=3,
+inputpath=../mini_search_engine/
+} 
+\usepackage{fontspec}
+\setmainfont{Times New Roman}[PunctuationSpace=2]
+\newfontfamily{\consolas}{YaHeiConsolas.ttf}
+\newfontfamily{\monaco}{MONACO.TTF}
+\setmainfont{Times New Roman}
+\setsansfont{MONACO.TTF}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{setspace}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+\lhead{Advanced Data Structure and Algorithm Analysis}
+\cfoot{}
+%\usepackage{titlesec, blindtext, color}
+%\definecolor{gray75}{gray}{0.75}
+%\newcommand{\hsp}{\hspace{20pt}}
+%\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+\newcommand*{\mytitle}
+{
+	\begingroup 
+		\centering
+		\vspace*{0.2\paperheight} % White space at the top of the page
+		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal line
+		\rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
+		{\LARGE{\sffamily\textbf {Laboratory Project 2 \\[0.3\baselineskip] Mini Search Engine}}}\\[0.2\baselineskip] % Title		
+		\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal line
+		\rule{\textwidth}{1.6pt}\\[\baselineskip] % Thick horizontal line
+		\vspace*{\baselineskip} % Whitespace between 
+		\begin{center}
+			\begin{tabular}{l l}
+				***& ***
+			\end{tabular}
+		\end{center}		
+		\centering{{\textbf{Date:}\hspace{2pt}{\textsf{ 2017-03-26}}}}
+		\vfill
+	\endgroup
+}
+\begin{document}
+	\begin{titlepage}
+		\mytitle
+	\end{titlepage}	
+	\begin{spacing}{1.2}
+		\tableofcontents
+	\end{spacing}
+	\newpage
+	\section{Introduction}
+	%\thispagestyle{fancy}
+	\subsection{Problem Description}
+For the purpose of creating a mini search engine, an inversion file index must be built, so that a fast speed and high efficiency can be achieved when users are searching some resources through the engine. An inversion file index, as we can see literally, is an index that contains a list of pointers (e.g. the number of a page) to all occurrences of that term in the text, opposite to the common index. On the process of constructing a reasonable and practical inversion file index, a large pool of problems need to be solved. We conclude them into three parts.
+\subsubsection{Stop words handling}
+
+ When searching from various passages, it’s often the case that some words may occur almost every passage, such as “a”, “will”. We define this kind of word as stop words or noisy words. It’s obvious that including stop words into the inversion file index is a burdensome and inefficient work. So, for the purpose of avoiding the situation, we are willing to eliminate them when construct the inversion file index. In order to achieve the goal, we determine the collection of stop word in the first place, which is according to the statistic of word frequency. Second, we construct a BST that contain stop words on the basis of the former collection. After that, we search the BST for the sake of ascertaining whether the word parsing from the passage is embraced in the set of stop words.
+ 
+\subsubsection{Parsing passages into words}
+For the sake of building an index, the very first step is to parse the passage into words, so that it can be easily dealt with. In order to standardize words, punctuations should be eliminated first. And next, we introduce a stemming algorithm, which can unify words origin from the same word with normalized form. So, users will not merely get relevant results that contain the exactly some word as they input. 
+
+\subsubsection{The construction and search of the inversion file index}
+
+We adopt B+ trees to organize the data, trees define a lexicographic order over the data, and the complete value of a key is used to direct search. Each internal node contains a key, left subtrees stores all keys smaller than the parent key, while right subtree stores keys larger than the parent key. Each leaf node contains the data we need. After constructing the B+ trees, it is easy for us to search a given key. At each step, choose the approximate branch and go down until reaching the leaf nodes.
+\subsection{The purpose of our report}
+\begin{itemize}
+	\item Building a feasible inversion file index without stop words.
+	\item Effectuating actions of searching 
+	\item  Analyzing the effects of thresholds on query.
+\end{itemize}
+
+	\section{Algorithm Specification}
+	First of all, we present the main data structures that we use. 
+	\begin{lstlisting}
+/*store and search stop words*/
+typedef struct node *BSTNode;
+typedef struct node *BSTree;
+struct node{
+char *key;
+BSTNode lchild, rchild;
+};
+
+/*store the files' id that contain the term, and the term's position*/
+typedef struct FileNode *FileList;
+typedef struct FileNode *FilePos;
+struct FileNode{
+int id;    
+int pos[MAX_REP];
+FilePos next;
+};
+
+typedef struct PostNode *PostList;
+struct PostNode{
+int times;
+FileList FList;
+};
+
+/*construct the inverted file index*/
+typedef struct TermNode *BpTree;
+typedef struct TermNode *BpNode;
+struct TermNode{
+void **pointers; 
+char **terms; 
+int numTerms; 
+bool isLeaf; 
+BpNode parent;
+BpNode next;
+};
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{data_structure.png}
+	\caption{The schematic diagram of data structures}
+	\label{ds}
+\end{figure}
+	
+	The main data structures that we use are displayed in Figure \ref{ds}. We use B+ trees to construct inverted file index. For the internal nodes of B+ tree, the pointers point to the nodes of next level. For the leaf nodes, the pointers point to the posting lists, which called PostNode. For each term, the PostNode contains the term's frequency, and the file id which contains the term, and the positions in each file where the term appears. 
+	The pseudo-code of main function is as follows.
+
+\begin{lstlisting}
+BpTree Dictionary;
+while ( read a document D ) {
+	while ( read a word W in D ) {
+	T = Preprocessing(W);
+	if ( Find( Dictionary, T ) == false )
+		InsertPostNode( Dictionary, T );
+	else 
+		InsertFileNode( FileList, T);
+	}
+}
+\end{lstlisting}
+We will discussion each component of the pseudo-code. 
+\subsection{Period1: Preprocessing}
+
+\subsubsection{Stop words handling}
+In order to possess a fast speed and high efficiency in the next stage, we chose the BST as the data structure of stop words, for the convenience in searching and the small quantity of stop words. The pseudo-code of constructing a binary search tree is as follows.
+\begin{lstlisting}
+BSTree StopWords;
+while ( read the stop words file L ) {
+	while ( read a stop word W in L ) {
+		InsertBST(StopWords, W);
+	}	
+}
+\end{lstlisting}
+
+The stop words file is downloaded from \url{https://github.com/Alir3z4/stop-words}.
+
+\subsubsection{Parse passages into words}
+After construct the binary search tree of stop words, we need to judge whether word is a stop word. We use the searching algorithm of binary search tree to find whether the key word is embraced in the group of stop words. If we find the certain word in the tree, we assign it as a null string. On the contrary, we will handle other words in the next steps. 
+\begin{lstlisting}
+BSTree StopWords;
+while (read a word W){
+	if (find (StopWords, W))
+		continue;
+	term T = stemming(W);
+}
+\end{lstlisting}
+
+We use the stemming algorithm on the website \url{https://tartarus.org/martin/PorterStemmer/}.
+	
+\subsection{Period 2: Inversion file index construction: using B+ Tree}
+
+The pseudo-code of constructing the inverted file index is as follows.
+\begin{lstlisting}
+Dictionary = NewBpTree()
+if (find (Dictionary, term T) == False)
+	P = InsertPostNode(term T);
+else
+	P = InsertFileNode(term T);
+Insert(Dictionary, term, P);
+
+Insert(Dictionary, T, P)
+{
+	if (need not to split)
+		InsertIntoLeaf(T, P);
+	else{
+		InsertIntoLeafAfterSpliting(T, P);
+		while (need to split){
+			InsertIntoParentAfterSpliting();
+		}
+		InsertIntoParent();
+	}
+}
+\end{lstlisting}
+
+We read words in the document sequentially. After pre-processing, we will find the term in the dictionary, which we implement by B+ tree. If there is not a term in the B+ tree yet, we will new a PostNode, which is used to record the frequency and the position information in each documents. If there is already a term in the B+ tree, we will let the times of the term plus 1, at the same time, insert the position information in the FileList. Then update this term's PostNode. The process of insertion would need to split the nodes if there are so much terms in one nodes.
+
+\subsection{Period 3: Search word}
+The pseudo-code of searching word is as follows.
+\begin{lstlisting}
+while (read a sentence){
+	while (read a word in the sentence){
+		term = preprocessing (word);
+		postinglist = find(Dictionary, term)
+	}
+}
+pick up the minimum times postinglist minPL;
+get the FileList minFL of minPL;
+while (minFL){
+	if (have the common file id)
+		break;
+	next;	
+}
+if (no common file id)
+	No results!
+else
+	print the results according to the positions;
+\end{lstlisting}
+We can searching words or phrase. For a single word, we can return the frequency, and the position in each files. For a phrase, we can return the common file ids which both have the search words in this phrase.
+
+\section{Chapter 3: Testing and Results}
+
+\subsection{Single word query}
+This section we test the single word. Our program will return the document ids which contain the search word. More importantly, the results sort by the frequency in a document. This is will help us know which documents has the most term. Besides, the results also return the position of the search word in each document.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{love.png}
+	\caption{Single word query: love}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{tiger.png}
+	\caption{Single word query: tiger}
+\end{figure}
+
+\subsection{Phrase query}
+This section we test the phrase. Our program will return the document ids which contain the all single word in the query phrase. And we return the position of one word of this phrase, which will help us find the word quickly.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{ophelia_hamlet.png}
+	\caption{Phrase query: Ophelia Hamlet}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{juliet_romeo.png}
+	\caption{Phrase query: Juliet Romeo}
+\end{figure}
+\subsection{Phrase query based on users' need}
+In order to test whether our searching engine can satisfy the requirement of users, we choose some classic plots in Hamlet and Romeo and Juliet, and input some possible key words, then compare gotten results with actual scene that contain the needed information.
+
+\begin{longtabu} to \textwidth {X[4,l] X[4,l] X[1,c] X[1,c]}
+	\hline
+	Users’ need &	Searching words &	precision&	recall\\
+	\hline
+	Death of Ophelia&	Ophelia die&	1/3&	1/4\\
+	&	Ophelia dead&	3/5&	3/4\\
+	&	Ophelia drowning &1/2&	1/4\\
+	\hline 
+	Hamlet reencounter with Laertes &	Hamlet fight Laertes &	1&	1\\
+	&	Laertes hamlet grapple & 1/2&	1/2\\
+	&	Hamlet Laertes wound&	1&	1\\
+	&	Hamlet Laertes poison wound &	1/2&	1/2\\
+	&	Hamlet slain Laertes&	1/3&	1/2\\
+	\hline
+	Hamlet kill Polonius &	Hamlet kill Polonius &	3/4&	1\\
+	&	Polonius dead&	2/5&	2/3\\
+	&	Polonius slain&	1/2&	1/3\\
+	\hline
+	\caption{Hamlet}
+\end{longtabu}
+\begin{longtabu}to \textwidth {X[4,l] X[4,l] X[1,c] X[1,c]}
+	\hline
+	Users’ need&	Searching word&	Precision&	recall\\
+	\hline
+	Romeo kill Tybalt &	Romeo kill Tybalt&	3/4&	1\\
+	&	Tybalt die&	1/3&	1\\
+	&	Tybalt killed &	3/4&	1\\
+	&	Tybalt dead&	1/3&	1\\
+	&	Romeo fight Tybalt&	1/2&	2/3\\
+	&	Romeo slain Tybalt&	3/5&	1\\
+	\hline
+	Marriage of Romeo and Juliet &	Marriage Romeo Juliet&	1/3&	3/4\\
+	\hline
+	Romeo commit suicide&	Romeo poison&	3/8&	1/2\\
+	&	Romeo drug&	1&	1/3\\
+	\hline
+	\caption{Romeo and Juliet}
+\end{longtabu}
+To sum up , the average precision is 0.569, the average recall Is 0.7. So, we can safely draw the conclusion that users can get the majority of needed resources through our searching engine. However, the final results may have some redundancy, as many irrelevant results are retrieved. 
+Therefore, thresholds are requisite so as to improve the precision of our engine.
+\section{Chapter 4: Analysis and comments}
+\subsection{Time and space complexity}
+We can divide the time and space complexity into three parts: reading the documents, constructing the inverted file index, and querying words or phrase.
+\subsubsection{Reading the documents}
+If we let $C_i$ denote the number total characters in the $i$-th file, then total number of character will be $C=\sum\limits_{i=1}^NC_i$. Due to we reading the files on line, so both of the time and space complexity are $\Theta(C)$.
+\subsubsection{Constructing the inverted file index}
+Assume the order of B+ tree is $b$, and let $n$ denote the total number of terms in the B+ tree. Constructing the inverted file index can roundly divided into two parts. Firstly, it will take $O(log_b n)$ to find a record. Secondly, it will take $O(log_b n)$ to insert a record. As for the space complexity, it will need $O(n+ N\times W \times n)$, where $W$ means the average number of words in a document.
+
+\subsubsection{Querying words or phrase}
+Let $q$ denote the word in a phrase, and $T$ donote the total number of terms in the B+ tree, $l_i$ denote the FileList's length of the $i$-th word.  Then the complexity of finding a word in the B+ tree will be $O(log_b T)$. Find the common file id will take $O(q\times min\{l_i\} + nlog T)$, because we need to compare these $q$ FileList.
+\subsection{Performance of threshold}
+
+  As what’s said above, thresholds can help to improve the precision of the searching engine. 
+  Nevertheless, it may decrease the value of recall in the meantime, since some relevant answers may be truncated. Thus, it’s an essential step to determine the suitable percent, which can make  the precision and recall of our searching engine in proper values. 
+  We hypothesize that results with frequency of occurrences less than two times are considered irrelevant. And we test words “kill, beauty, die, wedding, drowning, marriage ,sword, sing songs, send flowers”
+  \begin{longtabu} to \textwidth {XXX}
+  	\hline
+	Thresholds 	&	precision	&	recall	\\
+	\hline
+	0	&	1	&	0	\\
+	0.1	&	1	&	0.152	\\
+	0.2	&	1	&	0.303	\\
+	0.3	&	1	&	0.454	\\
+	0.4	&	1	&	0.606	\\
+	0.5	&	1	&	0.76	\\
+	0.6	&	1	&	0.91	\\
+	0.7	&	0.943	&	1	\\
+	0.8	&	0.825	&	1	\\
+	0.9	&	0.733	&	1	\\
+	1	&	0.66	&	1	\\
+	\hline
+	\caption{kill}
+  \end{longtabu}
+  \begin{longtabu} to \textwidth {XXX}
+  	\hline
+	Thresholds 	&	precision	&	recall	\\
+	\hline
+	0	&	1	&	0	\\
+	0.1	&	1	&	0.267	\\
+	0.2	&	1	&	0.53	\\
+	0.3	&	1	&	0.8	\\
+	0.4	&	0.938	&	1	\\
+	0.5	&	0.75	&	1	\\
+	0.6	&	0.625	&	1	\\
+	0.7	&	0.535	&	1	\\
+	0.8	&	0.468	&	1	\\
+	0.9	&	0.416	&	1	\\
+	1	&	0.375	&	1	\\
+	\hline
+	\caption{beauty}
+  \end{longtabu}
+  \begin{longtabu} to \textwidth {XXX}
+  	\hline
+	Thresholds 	&	precision	&	recall	\\
+	\hline
+	0	&	1	&	0	\\
+	0.1	&	1	&	0.102	\\
+	0.2	&	1	&	0.204	\\
+	0.3	&	1	&	0.306	\\
+	0.4	&	1	&	0.408	\\
+	0.5	&	1	&	0.51	\\
+	0.6	&	1	&	0.612	\\
+	0.7	&	1	&	0.714	\\
+	0.8	&	1	&	0.816	\\
+	0.9	&	1	&	0.918	\\
+	1	&	0.98	&	1	\\
+	\hline
+	\caption{die}
+  \end{longtabu}
+  \begin{longtabu} to \textwidth {XXX}
+  	\hline 
+  	Thresholds 	&	precision	&	recall	\\
+  	\hline
+  	0	&	1	&	0	\\
+  	0.1	&	1	&	0.443	\\
+  	0.2	&	1	&	0.886	\\
+  	0.3	&	0.753	&	1	\\
+  	0.4	&	0.565	&	1	\\
+  	0.5	&	0.452	&	1	\\
+  	0.6	&	0.376	&	1	\\
+  	0.7	&	0.322	&	1	\\
+  	0.8	&	0.282	&	1	\\
+  	0.9	&	0.251	&	1	\\
+  	1	&	0.226	&	1	\\
+  	\hline
+  	\caption{wedding}
+  \end{longtabu}
+  
+ \begin{longtabu} to \textwidth {XXX}
+  	\hline
+  	Thresholds 	&	precision	&	recall	\\
+  	\hline
+  	0	&	1	&	0	\\
+  	0.1	&	1	&	0.383	\\
+  	0.2	&	1	&	0.767	\\
+  	0.3	&	0.869	&	1	\\
+  	0.4	&	0.652	&	1	\\
+  	0.5	&	0.522	&	1	\\
+  	0.6	&	0.435	&	1	\\
+  	0.7	&	0.373	&	1	\\
+  	0.8	&	0.326	&	1	\\
+  	0.9	&	0.29	&	1	\\
+  	1	&	0.261	&	1	\\
+  	\hline
+  	\caption{drowning}
+  \end{longtabu}
+  \begin{longtabu} to \textwidth {XXX}
+  	\hline
+  	Thresholds 	&	precision	&	recall	\\
+  	\hline
+  	0	&	1	&	0	\\
+  	0.1	&	1	&	0.386	\\
+  	0.2	&	1	&	0.772	\\
+  	0.3	&	0.863	&	1	\\
+  	0.4	&	0.647	&	1	\\
+  	0.5	&	0.518	&	1	\\
+  	0.6	&	0.431	&	1	\\
+  	0.7	&	0.37	&	1	\\
+  	0.8	&	0.324	&	1	\\
+  	0.9	&	0.28	&	1	\\
+  	1	&	0.26	&	1	\\
+  	\hline
+  	\caption{marriage}
+  \end{longtabu}
+  \begin{longtabu} to \textwidth {XXX}
+  	\hline
+	Thresholds 	&	precision	&	recall	\\
+	\hline
+	0	&	1	&	0	\\
+	0.1	&	1	&	0.102	\\
+	0.2	&	1	&	0.204	\\
+	0.3	&	1	&	0.306	\\
+	0.4	&	1	&	0.408	\\
+	0.5	&	1	&	0.51	\\
+	0.6	&	1	&	0.612	\\
+	0.7	&	1	&	0.714	\\
+	0.8	&	1	&	0.816	\\
+	0.9	&	1	&	0.918	\\
+	1	&	0.99	&	1	\\
+	\hline
+	\caption{sword}
+  \end{longtabu}
+  \begin{longtabu} to \textwidth {XXX}
+  	\hline
+	Thresholds 	&	precision	&	recall	\\
+	\hline
+	0	&	1	&	0	\\
+	0.1	&	1	&	0.191	\\
+	0.2	&	1	&	0.382	\\
+	0.3	&	1	&	0.573	\\
+	0.4	&	1	&	0.764	\\
+	0.5	&	1	&	0.955	\\
+	0.6	&	0.873	&	1	\\
+	0.7	&	0.748	&	1	\\
+	0.8	&	0.654	&	1	\\
+	0.9	&	0.582	&	1	\\
+	1	&	0.524	&	1	\\
+	\hline
+	\caption{sing songs}
+  \end{longtabu}
+  \begin{longtabu} to \textwidth {XXX}
+  	\hline
+  	Thresholds 	&	precision	&	recall	\\
+  	\hline
+  	0	&	1	&	0	\\
+  	0.1	&	1	&	0.733	\\
+  	0.2	&	0.682	&	1	\\
+  	0.3	&	0.454	&	1	\\
+  	0.4	&	0.341	&	1	\\
+  	0.5	&	0.272	&	1	\\
+  	0.6	&	0.227	&	1	\\
+  	0.7	&	0.194	&	1	\\
+  	0.8	&	0.17	&	1	\\
+  	0.9	&	0.151	&	1	\\
+  	1	&	0.136	&	1	\\
+  	\hline
+  	\caption{send flowers}
+  \end{longtabu}
+ \begin{longtabu} to \textwidth {XXX}
+  	\hline
+	Thresholds 	&	precision	&	recall	\\
+	\hline
+	0	&	1	&	0	\\
+	0.1	&	1	&	0.306555556	\\
+	0.2	&	0.964667	&	0.560888889	\\
+	0.3	&	0.882111	&	0.715444444	\\
+	0.4	&	0.793667	&	0.798444444	\\
+	0.5	&	0.723778	&	0.859444444	\\
+	0.6	&	0.663	&	0.903777778	\\
+	0.7	&	0.609444	&	0.936444444	\\
+	0.8	&	0.561	&	0.959111111	\\
+	0.9	&	0.522556	&	0.981777778	\\
+	1	&	0.489667	&	1	\\
+	\hline
+	\caption{Average}
+  \end{longtabu}
+  \begin{figure}[H]
+  	\centering
+  	\includegraphics[width=0.9\textwidth]{precision_recall.png}
+  	\caption{Precision and Recall}
+  \end{figure}
+  So, according to diagrams above, it’s obvious that the value of precision is inversely proportional to the value of recall. And we can see when percent equal 0.4, the value of precision and recall is identical. Accordingly, w can draw the conclusion that 0.4 is the most suitable percent for thresholds.
+\subsection{Deal with large files}
+If we have more files, and lots of distinct words, for example, we have 500 000 files and 400 000 000 distinct words. We have the ways to deal with this huge problem. We can build more than one B+ tree to realize the inverted file index. In details, we can divided the 500,000 files into 50 groups, and each group has 1000 files. Then we build a B+ tree in each group and construct the inverted file index respectively. When it's time for searching, we can search in each B+ tree, and then merge the search results. So it's possible for our program to deal with large files.
+
+\section{Appendix: Source Code in C}
+\subsection{Get the document}
+Use the following python program to crawl the documents from \url{http://shakespeare.mit.edu/}.
+\lstset{language=python}
+		{\ttfamily\textit{\lstinputlisting{mycrawl_peipei.py}}}
+\subsection{Stemming}
+The code is from \url{https://tartarus.org/martin/PorterStemmer/}
+\lstset{language=c}
+		{\ttfamily\textit{\lstinputlisting{PorterStemmer.c}}}
+\subsection{Main Function}
+%	\thispagestyle{fancy}
+		%\begin{lstlisting}[language=C]
+		%\end{lstlisting}
+		{\ttfamily\textit{\lstinputlisting{main.c}}}
+	%\newpage
+\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{99}
+	\bibitem{ww}M.F. Porter,The Porter Stemming Algorithm, \url{https://tartarus.org/martin/PorterStemmer/}
+	
+\end{thebibliography}
+	\subsection*{\Large{Declaration:}}
+	\addcontentsline{toc}{section}{Declaration and Duty Assignments}
+		\Large {\emph{We hereby declare that all the work done in this project 	titled ``Mini search engine'' is of our independent effort as a group.}}
+	\subsection*{\Large Duty Assignments:}
+		\noindent
+		\textbf{Programmer:} ****\\
+		\textbf{Tester:} ****\\
+		\textbf{Writer:} ****
+\end{document}
