@@ -1,0 +1,549 @@
+\documentclass{article}
+%\usepackage[noae]{Sweave}
+\RequirePackage{fancyvrb}
+\RequirePackage{listings}
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage{float}
+%\usepackage{Sweave}
+%\SweaveOpts{keep.source=TRUE}
+% -------------------------------------------------------------------------------
+<<SweaveListingsPreparations, results=tex, echo=FALSE, strip.white=false>>=
+require(SweaveListingUtils)
+SweaveListingoptions(intermediate = FALSE)
+SweaveListingPreparations()
+setToBeDefinedPkgs(pkgs = c("SweaveListingUtils"),
+                   keywordstyles = c("\\bf\\color{red}","\\bf\\color{red}"))
+@
+
+
+<<cleanup, echo=FALSE>>=
+unloadNamespace("SweaveListingUtils")
+@
+
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=lines,numbers=left,numberstyle=\tiny\color{black},basicstyle={\color{black}}\consolas\itshape,keywordstyle=\color{red}\bfseries}
+\lstdefinestyle{Routstyle}{style=RoutstyleO,numbers=left,numberstyle=\tiny\color{black},frame=lines,basicstyle={\color{black}}\footnotesize}
+
+<<echo=FALSE>>=
+options(width = 60)
+@
+
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{titlesec}
+%% This is a bug in Ubuntu1604lts.
+%% https://bugs.launchpad.net/ubuntu/+source/texlive-extra/+bug/1574052
+\usepackage{etoolbox}%
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}%
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}%
+\makeatother
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{enumerate}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\renewcommand{\contentsname}{{\cjkhwxk \centerline{目{  } 录}}}
+\renewcommand\refname{参考文献}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+\setCJKfamilyfont{cjkhwxk}{STXINGKA.TTF}
+%\setCJKfamilyfont{cjkfzcs}{FZCS.ttf}
+%\newcommand*{\cjkfzcs}{\CJKfamily{cjkfzcs}}
+\newcommand*{\cjkhwxk}{\CJKfamily{cjkhwxk}}
+%\newfontfamily\hwzs{STZHONGS.TTF}
+
+\newcommand{\verylarge}{\fontsize{60pt}{\baselineskip}\selectfont}  
+\newcommand{\chuhao}{\fontsize{44.9pt}{\baselineskip}\selectfont}  
+\newcommand{\xiaochu}{\fontsize{38.5pt}{\baselineskip}\selectfont}  
+\newcommand{\yihao}{\fontsize{27.8pt}{\baselineskip}\selectfont}  
+\newcommand{\xiaoyi}{\fontsize{25.7pt}{\baselineskip}\selectfont}  
+\newcommand{\erhao}{\fontsize{23.5pt}{\baselineskip}\selectfont}  
+\newcommand{\xiaoerhao}{\fontsize{19.3pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{16pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}      % 字号设置  
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}  % 字号设置  
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}    % 字号设置  
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}   % 字号设置  
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}  % 字号设置  
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}    % 字号设置 
+\setCJKmainfont{STZHONGS.TTF}
+%\setmonofont{Consolas}
+\newfontfamily{\consolas}{YaHeiConsolas.ttf}
+\newfontfamily{\monaco}{MONACO.TTF}
+\newcommand*{\mytitle}
+{
+	
+	\begingroup 
+	\begin{center}
+		\vspace*{0.05\paperheight} % White space at the top of the page
+		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal line
+		\rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
+		{\erhao{\cjkhwxk {多元统计实验四\\[0.4\baselineskip]基于体检数据的肝、胆疾病的判别分析}}}\\[0.2\baselineskip] % Title
+		\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}		
+		\rule{\textwidth}{1.6pt}\\[3\baselineskip]
+		\includegraphics[width=0.5\textwidth]{xiaohui.jpg}
+		\vspace*{3\baselineskip} % Whitespace between 
+		{\LARGE
+			\begin{longtable}{ll}
+				\cjkhwxk{姓$\;$名：}& $\;\;$****\\
+				\cjkhwxk{学$\;$号：}& $\;\;$*****\\
+				\cjkhwxk{班$\;$级：}& $\;\;$*****\\
+			\end{longtable}
+		}\par
+		\vspace*{1\baselineskip}
+		{\Large \today}
+	\end{center}
+	\vfill
+	\endgroup
+}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\space \qquad \space}
+\chead{多元统计实验四 \qquad}
+\rhead{\qquad\thepage/\pageref{LastPage}}
+
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\begin{titlepage}
+		\mytitle
+\end{titlepage}
+\begin{spacing}{1.5}
+\tableofcontents
+\end{spacing}
+\newpage
+\section{数据来源和数据预处理}
+根据某医院的2014年的肝、胆病人的资料和体检人群的数据资料,我利用R语言对肝胆疾病进行了判别分析。
+\subsection{数据读取}
+首先我们读取数据,因为数据文件格式为xls，所以我采用XLconnect包来读取sample.xls的数据。读取命令以及前六行结果如下所示
+
+<<echo=TRUE>>=
+library(XLConnect)
+connect <- loadWorkbook('肝胆病患者检查数据.xls')
+sample1 <- readWorksheet(connect,1)
+head(sample1)
+@
+\subsection{缺失值分析}
+首先我们判断一下数据集中是否有缺失值，
+
+<<echo=TRUE>>=
+sum(is.na(sample1))
+@
+从结果可以看出，数据集中没有缺失，故我们将数据集中字符串转换为数值型。
+<<echo=TRUE>>=
+sample1[,-1] <- sapply(sample1[,-1], function(x) as.numeric(x))
+sample1[,6] <- as.factor(sample1[,6])
+@
+\subsection{异常值分析}
+下面我们对每个变量绘制箱线图来观察数据的分布，判断是否存在异常点，当然对于“临床诊断”我们无须进行异常点分析，因为其为类别型变量。
+
+<<bp4,include=FALSE,fig=TRUE>>=
+par(mfrow=c(2,2))
+boxplot(sample1$X.BIL.,main="Boxplot of BIL")
+boxplot(sample1$X.Alb.,main="Boxplot of Alb")
+boxplot(sample1$X.ALP.,main="Boxplot of ALP")
+boxplot(sample1$X.ALT.,main="Boxplot of ALT")
+@
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{report-bp4}
+\caption{BIL,Alb,ALP和ALT的箱线图}
+\end{figure}
+
+可见除了白蛋白Alb数据分布比较均匀外，其余三个指标都有较多的异常点。
+
+\subsection{正态性分析}
+\subsubsection{整个总体}
+首先我们通过绘制QQ图来直观地判断变量的正态性
+<<QQplot,fig=TRUE,include=FALSE>>=
+# 从原始数据集中提出X
+par(mfrow = c(2,2))
+for (i in c(2:5))
+{
+  qqnorm(sample1[,i], main = paste0("QQ plot of ",colnames(sample1)[i]))
+  qqline(sample1[,i])
+}
+@
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{report-QQplot}
+\caption{各个指标的QQ图}
+\end{figure}
+
+从上面QQ图我们可以大致地判断出这四个指标都不服从正态分布，为了进一步地判断各个指标的正态性，我们进行下面的Shapiro-Wilk正态性检验。
+
+<<echo=TRUE>>=
+sapply(sample1[,-c(1,6)], function(x) shapiro.test(x))
+@
+
+检验结果完全服从我们从QQ图得出的判断，所以我们可以得出结论：这四个指标都不服从正态分布。
+\subsubsection{按group分组的总体}
+下面我们按照group分组单独对四个指标分析正态性。
+<<echo=TRUE>>=
+G1 <- sample1[sample1$group==1, ]
+G2 <- sample1[sample1$group==2, ]
+G3 <- sample1[sample1$group==3, ]
+G4 <- sample1[sample1$group==4, ]
+G5 <- sample1[sample1$group==5, ]
+@
+
+首先我们还是先绘制QQ图进行分析
+<<QQG1plot,fig=TRUE,include=FALSE>>=
+par(mfrow = c(2,2))
+for (i in c(2:5))
+{
+  qqnorm(G1[,i], main = paste0("QQ plot of ",colnames(G1)[i]))
+  qqline(G1[,i])
+}
+@
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{report-QQG1plot}
+\caption{G1的各个指标的QQ图}
+\end{figure}
+
+<<QQG2plot,fig=TRUE,include=FALSE>>=
+par(mfrow = c(2,2))
+for (i in c(2:5))
+{
+  qqnorm(G2[,i], main = paste0("QQ plot of ",colnames(G2)[i]))
+  qqline(G2[,i])
+}
+@
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{report-QQG2plot}
+\caption{G2的各个指标的QQ图}
+\end{figure}
+
+<<QQG3plot,fig=TRUE,include=FALSE>>=
+par(mfrow = c(2,2))
+for (i in c(2:5))
+{
+  qqnorm(G3[,i], main = paste0("QQ plot of ",colnames(G3)[i]))
+  qqline(G3[,i])
+}
+@
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{report-QQG3plot}
+\caption{G3的各个指标的QQ图}
+\end{figure}
+
+<<QQG4plot,fig=TRUE,include=FALSE>>=
+par(mfrow = c(2,2))
+for (i in c(2:5))
+{
+  qqnorm(G4[,i], main = paste0("QQ plot of ",colnames(G4)[i]))
+  qqline(G4[,i])
+}
+@
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{report-QQG4plot}
+\caption{G4的各个指标的QQ图}
+\end{figure}
+
+
+<<QQG5plot,fig=TRUE,include=FALSE>>=
+par(mfrow = c(2,2))
+for (i in c(2:5))
+{
+  qqnorm(G4[,i], main = paste0("QQ plot of ",colnames(G5)[i]))
+  qqline(G4[,i])
+}
+@
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{report-QQG5plot}
+\caption{G5的各个指标的QQ图}
+\end{figure}
+
+
+为了进一步地判断各个指标的正态性，我们进行下面的Shapiro-Wilk正态性检验。
+<<echo=TRUE>>=
+sapply(G1[,-c(1,6)], function(x) shapiro.test(x))
+sapply(G2[,-c(1,6)], function(x) shapiro.test(x))
+sapply(G3[,-c(1,6)], function(x) shapiro.test(x))
+sapply(G4[,-c(1,6)], function(x) shapiro.test(x))
+sapply(G5[,-c(1,6)], function(x) shapiro.test(x))
+@
+
+\subsection{多元正态性检验}
+对于$p\times 1$的多元正态随机向量$\mathbf x$，均值为$\mathbf \mu$，协方差矩阵为$\mathbf\Sigma$，那么$\mathbf x$与$\mathbf\mu$的马氏距离的平方服从自由度为$p$的卡方分布。 Q-Q图展示卡方分布的分位数，横纵坐标分别是样本量与马氏距离平方值。如果点全部落在斜率为1、截距项为0的直线上，则表明数据服从多元正态分布。
+下面我们使用QQ图检验多元正态性,我们以整体多元正态检验为例
+<<mulnorm,echo=TRUE,fig=TRUE,include=false>>=
+X <- sample1[,-c(1,6)]
+center <- colMeans(X)
+n <- nrow(X)
+p <- ncol(X)
+cov <- cov(X)
+d <- mahalanobis(X, center, cov)
+coord <- qqplot(qchisq(ppoints(n), df=p),d, 
+         main="QQ plot Assessing Multivariate Normality", 
+          ylab = "Mahalanobis D2")
+abline(a=0,b=1)
+res = identify(coord$x,coord$y, labels = rownames(X))
+@
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{report-mulnorm}
+\caption{多元正态性检验}
+\end{figure}
+
+
+\subsection{相关性分析}
+首先我们计算各个指标以及类别之间的相关系数，直接利用cor()函数便可以计算出各个变量之间的相关系数如下所示。
+<<echo=TRUE>>=
+options(digits = 3)
+cor(sample1[,-c(1,6)])
+@
+
+为了直观地展示数据之间的相关性大小，我们利用corrgram包中的corrgram()函数直观地展示$X$各变量之间的相关性。
+
+<<corrgram, include=FALSE, fig=TRUE>>=
+library(corrgram)
+corrgram(sample1[,-c(1,6)], order=FALSE, lower.panel=panel.shade,
+         upper.panel=panel.pie, text.panel=panel.txt,
+         main="Correlogram of Four Indexes")
+@
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{report-corrgram}
+\caption{四个指标的相关性图}
+\end{figure}
+
+上图中，蓝色和从左下指向右上的斜杠表示单元格中的两个变量呈正相关。反过来，红色和从左上指向右下的斜杠表示变量呈负相关。色彩越深，饱和度越高，说明变量相关性越大；相关性接近于0的单元格基本无色。于是，相关性最大为X.Alb和X.ALP，但相关系数绝对值也不足0.75，其余指标之间的相关性均不强，都不到0.5,从图中看也就是阴影部分不足半圆。
+
+\section{利用判别分析的统计方法建立肝、胆疾病的判别函数}
+
+\subsection{检验组间均值显著性差异}
+我们需要检验
+\begin{equation}
+H_0:\mu_1=\mu_2=\mu_3=\mu_4=\mu_5, H_1:\text{不全相等}
+\end{equation}
+
+采用MANOVA进行检验
+<<echo=TRUE>>=
+mfit <- manova(cbind(X.BIL.,X.Alb.,X.ALP.,X.ALT.) ~ group, sample1)
+summary(mfit)
+@
+
+上述结果表明F检验显著，则表明不同组别之间存在显著性差异，但并没有说明两两组别之间存在差异，为此我们对两两组别之间进行Hotellings-T检验。%为了进一步讨论单个指标的方差分析，我们直接调用summary.aov()函数便可以得到单个指标的方差分析，结果如下所是
+%<<echo=TRUE>>=
+%library(ICSNP)
+%for (i in c(1:4))
+%  for (j in c((i+1):5))
+%    print(HotellingsT2(sample1[sample1$group==i,-c(1,6)], sample1[sample1$group==j, -c(1,6)]))
+%@
+
+<<echo=TRUE>>=
+library(ICSNP)
+for (i in c(1:4))
+  for (j in c((i+1):5))
+  {
+    tmp = HotellingsT2(sample1[sample1$group==i,-c(1,6)], 
+                       sample1[sample1$group==j, -c(1,6)])
+    cat(paste0('Group ',i,' v.s. Group ',j,
+               ': p.value ', tmp$p.value), "\n")
+  }
+@
+
+可见两两组别之间的HotellingsT2检验的p-value很小，所以拒绝原假设，也就是两两组别之间存在显著性差异.
+
+\subsection{分析组间方差显著性差异}
+我们需要检验
+\begin{equation}
+H_0:\Sigma_1=\Sigma_2=\Sigma_3=\Sigma_4=\Sigma_5, H_1:\text{不全相等}
+\end{equation}
+根据上机指导提供的varcomp()函数,经过上网查阅有关资料找到了该函数原作者的理论依据%\cite{Covmat}
+,文献中提出了检验统计量
+\begin{equation}
+\lambda_1=\dfrac{\prod_{g=1}^q\vert A_g\vert^{\frac{1}{2}N_g}}{\vert A\vert^{\frac{1}{2}N}}\dfrac{N^{\frac{1}{2}pN}}{\prod_{g=1}^qN_g^{\frac{1}{2}pN_g}}
+\end{equation}
+
+<<echo=TRUE>>=
+varcomp <- function(covmat,n) {
+  if (is.list(covmat)) {
+    if (length(covmat) < 2)
+      stop("covmat must be a list with at least 2 elements")
+    ps <- as.vector(sapply(covmat,dim))
+    if (sum(ps[1] == ps) != length(ps))
+      stop("all covariance matrices must have the same dimension")
+    p <- ps[1]
+    q <- length(covmat)
+    if (length(n) == 1)
+      Ng <- rep(n,q)
+    else if (length(n) == q)
+      Ng <- n
+    else
+      stop("n must be equal length(covmat) or 1")
+    
+    DNAME <- deparse(substitute(covmat))
+  }
+  
+  else
+    stop("covmat must be a list")
+  
+  ng <- Ng - 1
+  Ag <- lapply(1:length(covmat),function(i,mat,n) 
+    { n[i] * mat[[i]] },mat=covmat,n=ng)
+  A <- matrix(colSums(matrix(unlist(Ag),ncol=p^2,byrow=T)),ncol=p)
+  detAg <- sapply(Ag,det)
+  detA <- det(A)
+  V1 <- prod(detAg^(ng/2))/(detA^(sum(ng)/2))
+  kg <- ng/sum(ng)
+  l1 <- prod((1/kg)^kg)^(p*sum(ng)/2) * V1
+  rho <- 1 - (sum(1/ng) - 1/sum(ng))*(2*p^2+3*p-1)/(6*(p+1)*(q-1))
+  w2 <- p*(p+1) * ((p-1)*(p+2) * (sum(1/ng^2) - 1/(sum(ng)^2)) 
+                   - 6*(q-1)*(1-rho)^2) / (48*rho^2)
+  f <- 0.5 * (q-1)*p*(p+1)
+  STATISTIC <- -2*rho*log(l1)
+  PVAL <- 1 - (pchisq(STATISTIC,f) + w2*(pchisq(STATISTIC,f+4) 
+                                         - pchisq(STATISTIC,f)))
+  names(STATISTIC) <- "corrected lambda*"
+  names(f) <- "df"
+  RVAL <- structure(list(statistic = STATISTIC, parameter = f,
+              p.value = PVAL, data.name = DNAME, 
+              method = "Equality of Covariances Matrices Test"),
+          class="htest")
+  return(RVAL)
+}
+@
+
+下面我利用varcomp()函数来检验协方差矩阵是否一致。
+<<echo=TRUE>>=
+G1_COV = cov(G1[, -c(1,6)])
+G2_COV = cov(G2[, -c(1,6)])
+G3_COV = cov(G3[, -c(1,6)])
+G4_COV = cov(G4[, -c(1,6)])
+G5_COV = cov(G5[, -c(1,6)])
+n = c(4, 4, 4, 4, 4)
+G_COV = list(G1_COV, G2_COV, G3_COV, G4_COV, G5_COV)
+varcomp(G_COV, n)
+@
+
+从上述结果可以看出，不能拒绝协方差矩阵相等的假设。
+\subsection{建立判别函数}
+\subsubsection{线性判别函数}
+<<echo=TRUE>>=
+library(MASS)
+lda_res = lda(group ~ X.BIL.+X.Alb.+X.ALP.+X.ALT., sample1)
+lda_pre_class = predict(lda_res)$class
+lda_pre_val = predict(lda_res)
+ldahist(data = lda_pre_val$x[,1], sample1$group)
+lda_eff = data.frame(lda_pre_class, sample1[,6])
+# 误判总数
+sum(lda_pre_class!=sample1[,6])
+# 误判比例
+sum(lda_pre_class!=sample1[,6])/length(lda_pre_class)
+# 具体误判情况
+table(lda_eff)
+@
+<<klar,echo=TRUE,include=FALSE,fig=TRUE>>=
+library(klaR)
+partimat(group~X.BIL.+X.Alb.+X.ALP.+X.ALT., 
+         data = sample1, method = "lda")
+@
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{report-klar}
+\caption{线性判别结果}
+\end{figure}
+\subsubsection{二次函数判别}
+
+<<echo=TRUE>>=
+qda_res = qda(group ~ X.BIL.+X.Alb.+X.ALP.+X.ALT., sample1)
+qda_pre_class = predict(qda_res)$class
+qda_pre_val = predict(qda_res)
+qda_eff = data.frame(qda_pre_class, sample1[,6])
+# 误判总数
+sum(qda_pre_class!=sample1[,6])
+# 误判比例
+sum(qda_pre_class!=sample1[,6])/length(qda_pre_class)
+# 具体误判情况
+table(qda_eff)
+@
+<<qklar,echo=TRUE,include=FALSE,fig=TRUE>>=
+partimat(group~X.BIL.+X.Alb.+X.ALP.+X.ALT., 
+         data = sample1, method = "qda")
+@
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{report-qklar}
+\caption{二次判别结果}
+\end{figure}
+\subsubsection{RDA}
+<<echo=TRUE>>=
+library(klaR)
+rda_model <- rda(group ~ X.BIL.+X.Alb.+X.ALP.+X.ALT., sample1)
+rda_pred <- predict(rda_model, subset(sample1, select = -c(1,6)))
+table(rda_pred$class, sample1[,6])
+sum(rda_pred!=sample1[,6])/length(rda_pred)
+@
+\subsubsection{支持向量机}
+查阅有关资料，采用了支持向量机方法进行判别分析
+<<echo=TRUE>>=
+library(e1071)
+model <- svm(as.factor(group) ~ X.BIL.+X.Alb.+X.ALP.+X.ALT., sample1)
+pred <- predict(model, subset(sample1, select = -c(1,6)))
+table(pred, sample1[,6])
+sum(pred!=sample1[,6])/length(pred)
+@
+%我采用Bartlett检验
+%<<echo=TRUE>>=
+%sample1$group = as.factor(sample1$group)
+%bartlett.test(sample1[,c(2:5)] ~ sample1[,6])
+%@
+<<rklar,echo=TRUE,include=FALSE,fig=TRUE>>=
+partimat(group~X.BIL.+X.Alb.+X.ALP.+X.ALT., 
+         data = sample1, method = "rda")
+@
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{report-rklar}
+\caption{rda判别结果}
+\end{figure}
+\subsection{分析判别效果}
+从上面可以看出，四种判别方法效果都不是特别好，特别是第三组和第五组的判别上面，单纯从误判比例来看，支持向量机方法要略优于其它两种判别方法，但依然有25.9\%的误判。误判都主要发生在第三组和第五组上面。
+\section{根据判别函数去分析体检数据}
+首先用lda为例来分析体检数据
+<<echo=TRUE>>=
+connect1 <- loadWorkbook('体检资料.xls')
+sample2 <- readWorksheet(connect1,1)
+sample2new <- sapply(sample2[,c(18,22,20,16)], function(x) as.numeric(x))
+sample2new <- as.data.frame(sample2new)
+sample2new <- sample2new[complete.cases(sample2new),]
+colnames(sample2new) <- c('X.BIL.','X.Alb.','X.ALP.','X.ALT.')
+pred_res = predict(lda_res, sample2new)$class
+@
+判别结果为
+<<echo=TRUE>>=
+table(pred_res)
+@
+根据前面对判别方法的分析，lda不能很好的对第3类和第5类进行判别，于是选择支持向量机
+<<echo=TRUE>>=
+svm_pred_res = predict(model, sample2new)
+table(svm_pred_res)
+@
+判别结果依旧只有两类，但判给第3类的人数比用lda判别结果更多，而在第三类和第五类的判别中，支持向量明显优于lda，所以我们采用支持向量机的判别结果。
+
+\begin{thebibliography}{99}
+		\bibitem{RinAction} Robert I. Kabacoff,R in Action(Data analysis and graphics with R), MANNING
+		\bibitem{Covmat} An Introduction to Multivariate Statistical Analysis(3rd Edition), Theodore W.Anderson
+\end{thebibliography}
+\end{document}
