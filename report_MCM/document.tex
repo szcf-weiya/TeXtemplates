@@ -1,0 +1,202 @@
+% !TeX spellcheck = en_US
+\documentclass[a4paper,left=2.5cm,right=2.5cm,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage{cite}
+\usepackage{xeCJK}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{subfigure}
+\usepackage{tabu}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{amsfonts}
+\usepackage{appendix}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\setcounter{secnumdepth}{4}
+\usepackage{mhchem}
+\usepackage{multirow}
+\usepackage{extarrows}
+\titleformat*{\section}{\LARGE}
+\renewcommand\refname{参考文献}
+\renewcommand{\abstractname}{\sihao \cjkfzcs 摘{  }要}
+%\titleformat{\chapter}{\centering\bfseries\huge\wryh}{}{0.7em}{}{}
+%\titleformat{\section}{\LARGE\bf}{\thesection}{1em}{}{}
+\titleformat{\subsection}{\Large\bfseries}{\thesubsection}{1em}{}{}
+\titleformat{\subsubsection}{\large\bfseries}{\thesubsubsection}{1em}{}{}
+\renewcommand{\contentsname}{{\cjkfzcs \centerline{目{  } 录}}}
+%\setCJKfamilyfont{cjkhwxk}{STXingkai}
+%\setCJKfamilyfont{cjkfzcs}{STSongti-SC-Regular}
+\setCJKfamilyfont{cjkhwxk}{华文行楷}
+\setCJKfamilyfont{cjkfzcs}{方正粗宋简体}
+\newcommand*{\cjkfzcs}{\CJKfamily{cjkfzcs}}
+\newcommand*{\cjkhwxk}{\CJKfamily{cjkhwxk}}
+\newfontfamily\wryh{Microsoft YaHei}
+%\newfontfamily\hwzs{STZhongsong}
+%\newfontfamily\hwst{STSong}
+%\newfontfamily\hwfs{STFangsong}
+%\newfontfamily\jljt{MicrosoftYaHei}
+%\newfontfamily\hwxk{STXingkai}
+\newfontfamily\hwzs{华文中宋}
+\newfontfamily\hwst{华文宋体}
+\newfontfamily\hwfs{华文仿宋}
+\newfontfamily\jljt{方正静蕾简体}
+\newfontfamily\hwxk{华文行楷}
+\newcommand{\verylarge}{\fontsize{60pt}{\baselineskip}\selectfont}  
+\newcommand{\chuhao}{\fontsize{44.9pt}{\baselineskip}\selectfont}  
+\newcommand{\xiaochu}{\fontsize{38.5pt}{\baselineskip}\selectfont}  
+\newcommand{\yihao}{\fontsize{27.8pt}{\baselineskip}\selectfont}  
+\newcommand{\xiaoyi}{\fontsize{25.7pt}{\baselineskip}\selectfont}  
+\newcommand{\erhao}{\fontsize{23.5pt}{\baselineskip}\selectfont}  
+\newcommand{\xiaoerhao}{\fontsize{19.3pt}{\baselineskip}\selectfont} 
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}      % 字号设置  
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}  % 字号设置  
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}    % 字号设置  
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}   % 字号设置  
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}  % 字号设置  
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}    % 字号设置 
+
+\usepackage{diagbox}
+\usepackage{multirow}
+\boldmath
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\definecolor{cred}{rgb}{0.8,0.8,0.8}
+\definecolor{cgreen}{rgb}{0,0.3,0}
+\definecolor{cpurple}{rgb}{0.5,0,0.35}
+\definecolor{cdocblue}{rgb}{0,0,0.3}
+\definecolor{cdark}{rgb}{0.95,1.0,1.0}
+\lstset{
+	language=R,
+	numbers=left,
+	numberstyle=\tiny\color{black},
+	showspaces=false,
+	showstringspaces=false,
+	basicstyle={\footnotesize}\ttfamily,
+	keywordstyle=\color{cdocblue}\bfseries,
+	commentstyle=\color{cgreen},
+	stringstyle=\color{cred},
+	frame=lines,
+	escapeinside=``,
+	xleftmargin=1em,
+	xrightmargin=1em, 
+	%backgroundcolor=\color{cdark},
+	aboveskip=1em,
+	breaklines=true,
+	tabsize=4
+} 
+
+\newfontfamily{\consolas}{Consolas}
+\newfontfamily{\monaco}{Monaco}
+\setmonofont[Mapping={}]{Consolas}	
+\setsansfont{Consolas}
+\setmainfont{Times New Roman}
+
+\setCJKmainfont{华文中宋}
+
+\newcommand*{\mytitle}
+{
+	
+	\begingroup 
+	\begin{center}
+		\vspace*{0.05\paperheight} % White space at the top of the page
+		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal line
+		\rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
+		{\yihao{\cjkhwxk {**************** \\[0.4\baselineskip]********}}}\\[0.2\baselineskip] % Title
+		\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}		
+		\rule{\textwidth}{1.6pt}\\[3\baselineskip]
+		\includegraphics[width=0.5\textwidth]{xiaohui.jpg}
+		\vspace*{2\baselineskip} % Whitespace between 
+		{\LARGE\hwzs
+			\begin{longtable}{ll}
+				\cjkfzcs{队\,员\,一\,：$\qquad\quad$ }& ***\\
+				\cjkfzcs{队\,员\,二\,： }& ***\\
+				\cjkfzcs{队\,员\,三\,： }& ***
+			\end{longtable}
+		}\par
+		\vspace*{0.5\baselineskip}
+		{\Large\hwzs 2016.08}
+	\end{center}
+	\vfill
+	\endgroup
+}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\space \qquad \space}
+\chead{“深圳杯”数学建模挑战赛 \qquad}
+\rhead{\qquad\thepage/\pageref{LastPage}}
+\begin{document}
+	\begin{titlepage}
+		\mytitle
+	\end{titlepage}
+	\begin{spacing}{1.35}
+	\begin{abstract}
+		
+	\end{abstract}
+    \end{spacing}
+	\newpage
+	\begin{spacing}{1}
+		
+	\tableofcontents
+	\end{spacing}
+	\newpage
+	\begin{spacing}{1.2}
+	
+	\section{问题重述}
+现在，我们的任务有两个。分别是：
+	\begin{itemize}
+		\item ****
+		\item ****
+	\end{itemize}
+	\section{****模型}
+	
+	\subsection{模型假设}
+
+	\subsection{模型建立}
+	
+	\subsection{模型求解}
+	
+	\subsection{模型评估}
+	\newpage
+	\section{****模型}
+	
+	\subsection{模型假设}
+	
+	\subsection{模型建立}
+	
+	\subsection{模型求解}
+	
+	\subsection{模型评估}
+	\newpage
+	\section{****模型}
+	
+	\subsection{模型假设}
+	
+	\subsection{模型建立}
+	
+	\subsection{模型求解}
+	
+	\subsection{模型评估}
+	\newpage
+	\section{问题求解}
+	\subsection{问题一}
+	\subsection{问题二}
+	
+		
+	\end{spacing}
+	\newpage
+	\begin{thebibliography}{}
+		\bibitem{hohoweiya}
+	 \url{http://hohoweiya.xyz}
+	\end{thebibliography}	
+	
+\end{document}
