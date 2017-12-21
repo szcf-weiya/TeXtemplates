@@ -1,0 +1,23 @@
+% !TeX spellcheck = en_US
+\documentclass[a4paper,left=2.6cm,right=2.6cm,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{xeCJK}
+\usepackage{etoolbox}%
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}%
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}%
+\makeatother
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+\bibliography{ref.bib}
+\addbibresource{ref.bib}
+
+
+\title{bib使用例子}
+\author{weiya}
+\date{\today}
+\begin{document}
+	\maketitle
+Markowitz's work\cite{markowitz1952portfolio}
+\printbibliography
+\end{document}
