@@ -1,9 +1,0 @@
-[0] Config.pm:340> INFO - This is Biber 2.4
-[0] Config.pm:343> INFO - Logfile is 'pre.blg'
-[39] biber:287> INFO - === 二 3月 28, 2017, 22:58:20
-[133] Biber.pm:348> INFO - Reading 'pre.bcf'
-[272] Biber.pm:742> INFO - Found 0 citekeys in bib section 0
-[273] Utils.pm:147> WARN - The file 'pre.bcf' does not contain any citations!
-[278] bbl.pm:519> INFO - Writing 'pre.bbl' with encoding 'UTF-8'
-[279] bbl.pm:615> INFO - Output to pre.bbl
-[280] Biber.pm:109> INFO - WARNINGS: 1

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rm -rf */*.aux */*.bbl */*.bcf */*.blg */*.log */*.run.xml */*.synctex.gz */document-blx.bib */*.snm */*.toc */*.nav */*.out
