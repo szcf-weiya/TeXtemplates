@@ -1,0 +1,32 @@
+---
+title: "Toy example"
+output:
+  pdf_document: 
+    number_sections: true
+    include:
+      in_header: preamble.tex
+  html_notebook: default
+bibliography: ref.bib
+author: Wang, Lijun
+date: 13 September, 2018
+---
+
+# Toy Example
+
+$$
+\Omega_X=\Gamma\Lambda\Gamma^{-1}
+$$
+
+## Question
+
+We can use references in this rmarkdown report. For example, we want to refer to ESL.[@friedman2001elements]
+
+## Solution
+
+\begin{proof}
+
+your proof.
+
+\end{proof}
+
+# References
