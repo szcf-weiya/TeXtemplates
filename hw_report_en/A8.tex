@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{array,longtable}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{algorithmic}
+\usepackage[backend=biber,citestyle=authoryear,sortcites=true,natbib,sorting=nyt,style=apa]{biblatex}
+\bibliography{ref.bib}
+\addbibresource{ref.bib}
+\usepackage[
+  top=2.5cm, bottom=2.5cm,
+  left=2.6cm, right=2.6cm,
+  headsep=3mm,
+  headheight=15pt]{geometry}
+\usepackage{newpxtext}
+%\usepackage{newpxmath}
+\usepackage{amsthm, amsmath, amssymb}
+\newcommand\A{{\cal A}}
+\newcommand\B{{\cal B}}
+\newcommand\C{{\cal C}}
+\newcommand\R{{\cal R}}
+\newcommand\F{{\cal F}}
+\newcommand\I{{\mathbb I}}
+\newcommand\N{{\cal N}}
+\renewcommand\P{{\cal P}}
+\newcommand\Q{{\mathbb Q}}
+\newcommand\IR{\mathrm{I\!R}}
+\newcommand\Var{\mathrm{Var}}
+\newcommand\var{\mathrm{var}}
+\newcommand\Cov{\mathrm{Cov}}
+\newcommand\Bias{\mathrm{Bias}}
+\newcommand\E{\mathrm{E}}
+\newcommand\X{\mathcal{X}}
+\newcommand\x{\mathbf{x}}
+\renewcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\zero{\boldsymbol{0}}
+
+
+\newcommand\pto{\overset{p}{\rightarrow}}
+\newcommand\dto{\overset{d}{\rightarrow}}
+
+\renewcommand\thesection{Q\arabic{section}}
+\renewcommand\thesubsection{(\alph{subsection})}
+
+\newcommand\textred[1]{{\color{red}#1}}
+\newcommand\vs{\quad\text{versus}\quad}
+
+\newcommand\eqskip{12pt}
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}{Lemma}
+% refer to https://tex.stackexchange.com/questions/211136/environment-solution-environment-for-exercises-different-than-proof-environme
+\newenvironment{solution}
+    {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+    {\end{proof}}
+\title{Homework 8 of STAT 5010}
+\author{WANG Lijun}
+\date{\today}
+\begin{document}
+\maketitle
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+\chead{Homework 8 of STAT 5010 (WANG Lijun)}
+
+\end{document}

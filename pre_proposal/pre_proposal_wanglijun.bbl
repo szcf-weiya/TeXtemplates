@@ -1,0 +1,239 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{apa/global}
+    \entry{bair2006prediction}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,hash=fd192648c7757331105f601c94260006}{%
+           family={Bair},
+           family_i={B\bibinitperiod},
+           given={Eric},
+           given_i={E\bibinitperiod}}}%
+        {{uniquename=0,hash=0cb8fe4210baa81c4b0e67913b4d2768}{%
+           family={Hastie},
+           family_i={H\bibinitperiod},
+           given={Trevor},
+           given_i={T\bibinitperiod}}}%
+        {{uniquename=0,hash=a0480e95683b724415eaf6686c04c931}{%
+           family={Paul},
+           family_i={P\bibinitperiod},
+           given={Debashis},
+           given_i={D\bibinitperiod}}}%
+        {{uniquename=0,hash=88eea600247d798f8b2ce0b2dc614492}{%
+           family={Tibshirani},
+           family_i={T\bibinitperiod},
+           given={Robert},
+           given_i={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{e16b47883ec43a875e40f9b1dc3b4d21}
+      \strng{fullhash}{6f7d3932710d4d23a89f6b7fe4baff49}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelyear}{2006}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{473}
+      \field{title}{Prediction by supervised principal components}
+      \field{volume}{101}
+      \field{year}{2006}
+      \field{pages}{119\bibrangedash 137}
+      \range{pages}{19}
+    \endentry
+    \entry{breitung2011gls}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=6fcfe40719f391b64e9bc362e210b3f1}{%
+           family={Breitung},
+           family_i={B\bibinitperiod},
+           given={Jörg},
+           given_i={J\bibinitperiod}}}%
+        {{uniquename=0,hash=a7e9778f8108124a15514ed8ec4fa84c}{%
+           family={Tenhofen},
+           family_i={T\bibinitperiod},
+           given={Jörn},
+           given_i={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{fb32dead339496a1291f5759ff443048}
+      \strng{fullhash}{fb32dead339496a1291f5759ff443048}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelyear}{2011}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{495}
+      \field{title}{GLS estimation of dynamic factor models}
+      \field{volume}{106}
+      \field{year}{2011}
+      \field{pages}{1150\bibrangedash 1166}
+      \range{pages}{17}
+    \endentry
+    \entry{choi2012efficient}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=71a6a2150acfb2225bb33775e7f2089d}{%
+           family={Choi},
+           family_i={C\bibinitperiod},
+           given={In},
+           given_i={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{71a6a2150acfb2225bb33775e7f2089d}
+      \strng{fullhash}{71a6a2150acfb2225bb33775e7f2089d}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelyear}{2012}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometric Theory}
+      \field{number}{2}
+      \field{title}{Efficient estimation of factor models}
+      \field{volume}{28}
+      \field{year}{2012}
+      \field{pages}{274\bibrangedash 308}
+      \range{pages}{35}
+    \endentry
+    \entry{ECTJ:ECTJ330}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=6462c3f96bd9ac254d9ced125f4974af}{%
+           family={Chudik},
+           family_i={C\bibinitperiod},
+           given={Alexander},
+           given_i={A\bibinitperiod}}}%
+        {{uniquename=0,hash=f49791b3527d3c98ae7a5714758e04dc}{%
+           family={Pesaran},
+           family_i={P\bibinitperiod},
+           given={M.\bibnamedelimi Hashem},
+           given_i={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{uniquename=0,hash=b6bf2cc63414d1f5f6d4a7e20bfb0375}{%
+           family={Tosetti},
+           family_i={T\bibinitperiod},
+           given={Elisa},
+           given_i={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Blackwell Publishing Ltd}%
+      }
+      \strng{namehash}{13d19e95d02e9a3b0bae4ab136c5baeb}
+      \strng{fullhash}{41e3adc38ab8bf1230b256021aae969f}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelyear}{2011}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1368-423X}
+      \field{journaltitle}{The Econometrics Journal}
+      \field{number}{1}
+      \field{title}{Weak and strong cross-section dependence and estimation of large panels}
+      \field{volume}{14}
+      \field{year}{2011}
+      \field{pages}{C45\bibrangedash C90}
+      \range{pages}{-1}
+      \keyw{Common correlated effects (CCE) estimator,Panels,Strong and weak cross-section dependence,Weak and strong factors}
+    \endentry
+    \entry{forni2005generalized}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,hash=da46a0f7ac9d501e7896001447c66543}{%
+           family={Forni},
+           family_i={F\bibinitperiod},
+           given={Mario},
+           given_i={M\bibinitperiod}}}%
+        {{uniquename=0,hash=8f2fa5f0999c35286d901c160ec7c642}{%
+           family={Hallin},
+           family_i={H\bibinitperiod},
+           given={Marc},
+           given_i={M\bibinitperiod}}}%
+        {{uniquename=0,hash=87f69230e136bd69fe2f8517e0536169}{%
+           family={Lippi},
+           family_i={L\bibinitperiod},
+           given={Marco},
+           given_i={M\bibinitperiod}}}%
+        {{uniquename=0,hash=7b2f5c758fdfb711329e5ce8613416ee}{%
+           family={Reichlin},
+           family_i={R\bibinitperiod},
+           given={Lucrezia},
+           given_i={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{d413cf710e7dc8b87e60a7fb28640e68}
+      \strng{fullhash}{b3ee7ea73f9ecca6ef6158ce1a96eddf}
+      \field{sortinit}{F}
+      \field{sortinithash}{c6a7d9913bbd7b20ea954441c0460b78}
+      \field{labelyear}{2005}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{471}
+      \field{title}{The generalized dynamic factor model: one-sided estimation and forecasting}
+      \field{volume}{100}
+      \field{year}{2005}
+      \field{pages}{830\bibrangedash 840}
+      \range{pages}{11}
+    \endentry
+    \entry{stock2002forecasting}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=c687003b42562dd2da6e3367040b1fc3}{%
+           family={Stock},
+           family_i={S\bibinitperiod},
+           given={James\bibnamedelima H},
+           given_i={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{uniquename=0,hash=ede76d3991ac5a23e5025b49d0ec04f1}{%
+           family={Watson},
+           family_i={W\bibinitperiod},
+           given={Mark\bibnamedelima W},
+           given_i={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{7aad5c3cf97ec9d2c01ca37af2151ce8}
+      \strng{fullhash}{7aad5c3cf97ec9d2c01ca37af2151ce8}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelyear}{2002}
+      \field{datelabelsource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American statistical association}
+      \field{number}{460}
+      \field{title}{Forecasting using principal components from a large number of predictors}
+      \field{volume}{97}
+      \field{year}{2002}
+      \field{pages}{1167\bibrangedash 1179}
+      \range{pages}{13}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

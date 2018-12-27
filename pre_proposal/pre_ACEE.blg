@@ -1,0 +1,17 @@
+[0] Config.pm:340> INFO - This is Biber 2.4
+[0] Config.pm:343> INFO - Logfile is 'pre_ACEE.blg'
+[40] biber:287> INFO - === 四 3月  8, 2018, 19:09:12
+[146] Biber.pm:348> INFO - Reading 'pre_ACEE.bcf'
+[309] Biber.pm:742> INFO - Found 8 citekeys in bib section 0
+[316] Biber.pm:3151> INFO - Processing section 0
+[348] Biber.pm:3308> INFO - Looking for bibtex format file 'ref.bib' for section 0
+[364] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
+[376] bibtex.pm:974> INFO - Found BibTeX data source 'ref.bib'
+[378] Utils.pm:147> WARN - Duplicate entry key: 'breitung2011gls' in file 'ref.bib', skipping ...
+[560] UCollate.pm:65> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[560] UCollate.pm:65> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[561] Biber.pm:3028> INFO - Sorting list 'apa/global' of type 'entry' with scheme 'apa' and locale 'en-US'
+[561] Biber.pm:3032> INFO - No sort tailoring available for locale 'en-US'
+[576] bbl.pm:519> INFO - Writing 'pre_ACEE.bbl' with encoding 'UTF-8'
+[612] bbl.pm:615> INFO - Output to pre_ACEE.bbl
+[612] Biber.pm:109> INFO - WARNINGS: 1

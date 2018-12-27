@@ -1,0 +1,390 @@
+\documentclass{beamer}
+
+%\usepackage[british]{babel}
+\usepackage[american]{babel}
+
+\usepackage{graphicx,hyperref,ru,url}
+\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+\usefonttheme[onlymath]{serif}
+%\usepackage{cmbright}
+%\renewcommand\sfdefault{cmbr}
+\usepackage{xeCJK}
+\usepackage{indentfirst}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{subfigure}
+\usepackage{tabu}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{setspace}
+\usepackage{amsfonts}
+\usepackage{appendix}
+\usepackage{listings}
+\usepackage{multicol}
+ \usepackage{ulem}
+\usepackage{xcolor}
+\usepackage{geometry}
+\setCJKfamilyfont{cjkhwxk}{STXINGKA.TTF}
+\newcommand*{\cjkhwxk}{\CJKfamily{cjkhwxk}}
+%\newfontfamily{\consolas}{Consolas}
+%\newfontfamily{\monaco}{Monaco}
+%\setmonofont[Mapping={}]{Consolas}	%英文引号之类的正常显示，相当于设置英文字体
+%\setsansfont{Consolas} %设置英文字体 Monaco, Consolas,  Fantasque Sans Mono
+%\setmainfont{Times New Roman}
+\newfontfamily{\consolas}{YaHeiConsolas.ttf}
+\newfontfamily{\monaco}{MONACO.TTF}
+\newfontfamily{\ubuntumonoB}{UbuntuMono-B.ttf}
+\newfontfamily{\ubuntumonoBI}{UbuntuMono-BI.ttf}
+\newfontfamily{\ubuntuR}{Ubuntu-R.ttf}
+\newfontfamily{\ubuntuC}{Ubuntu-C.ttf}
+\setCJKmainfont{STZHONGS.TTF}
+%\setmainfont{MONACO.TTF}
+%\setsansfont{MONACO.TTF}
+%\setsansfont{UbuntuMono-R.ttf}
+%\setsansfont{UbuntuMono-B.ttf}
+\newcommand{\verylarge}{\fontsize{60pt}{\baselineskip}\selectfont}  
+\newcommand{\chuhao}{\fontsize{44.9pt}{\baselineskip}\selectfont}  
+\newcommand{\xiaochu}{\fontsize{38.5pt}{\baselineskip}\selectfont}  
+\newcommand{\yihao}{\fontsize{27.8pt}{\baselineskip}\selectfont}  
+\newcommand{\xiaoyi}{\fontsize{25.7pt}{\baselineskip}\selectfont}  
+\newcommand{\erhao}{\fontsize{23.5pt}{\baselineskip}\selectfont}  
+\newcommand{\xiaoerhao}{\fontsize{19.3pt}{\baselineskip}\selectfont} 
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}      % 字号设置  
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}  % 字号设置  
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}    % 字号设置  
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}   % 字号设置  
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}  % 字号设置  
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}    % 字号设置 
+
+\definecolor{cred}{rgb}{0.8,0.8,0.8}
+\definecolor{cgreen}{rgb}{0,0.3,0}
+\definecolor{cpurple}{rgb}{0.5,0,0.35}
+\definecolor{cdocblue}{rgb}{0,0,0.3}
+\definecolor{cdark}{rgb}{0.95,1.0,1.0}
+\lstset{
+	numbers=left,
+	numberstyle=\tiny\color{black},
+	showspaces=false,
+	showstringspaces=false,
+	basicstyle={\footnotesize}\consolas\itshape,
+	keywordstyle=\color{red}\bfseries,
+	commentstyle=\color{cgreen},
+	stringstyle=\color{cred},
+	frame=lines,
+	escapeinside=``,
+	xleftmargin=1em,
+	xrightmargin=1em, 
+	%backgroundcolor=\color{cdark},
+	aboveskip=1em,
+	breaklines=true,
+	tabsize=4
+} 
+
+\usepackage[style=apa,backend=biber,sortcites=true,citestyle=authoryear,natbib]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\DeclareCiteCommand{\cite}
+{\color{blue}\usebibmacro{prenote}}%
+{\usebibmacro{citeindex}%
+	\usebibmacro{cite}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citet}
+{\color{blue}\usebibmacro{prenote}}%
+{\usebibmacro{citeindex}%
+	\usebibmacro{cite}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkcolorbibparens]
+{\usebibmacro{prenote}}%
+{\usebibmacro{citeindex}%
+	\usebibmacro{cite}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\makeatletter
+\newrobustcmd{\mkcolorbibparens}[1]{%
+	\begingroup
+	\color{blue}%
+	\blx@blxinit
+	\blx@setsfcodes
+	\bibopenparen#1\bibcloseparen
+	\endgroup}
+\makeatother
+\bibliography{ref.bib}
+\addbibresource{ref.bib}
+% The title of the presentation:
+%  - first a short version which is visible at the bottom of each slide;
+%  - second the full title shown on the title slide;
+\title[动态因子模型在高维数据中的应用]{
+  \xiaoerhao 动态因子模型在高维数据中的应用}
+
+% Optional: a subtitle to be dispalyed on the title slide
+\subtitle{\sihao\cjkhwxk 有监督的动态因子模型预测}
+
+% The author(s) of the presentation:
+%  - again first a short version to be displayed at the bottom;
+%  - next the full list of authors, which may include contact information;
+\author[汪利军]{
+  汪利军（导师：张荣茂）}
+
+% The institute:
+%  - to start the name of the university as displayed on the top of each slide
+%    this can be adjusted such that you can also create a Dutch version
+%  - next the institute information as displayed on the title slide
+\institute[\xiaosihao\fontspec{LHANDW.TTF}Zhejiang University]{\sihao {数学科学学院}}
+
+% Add a date and possibly the name of the event to the slides
+%  - again first a short version to be shown at the bottom of each slide
+%  - second the full date and event name for the title slide
+\date[\today]{
+  \today \\
+  }
+%\graphicspath{{img/}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{内容概要}
+
+  \tableofcontents
+\end{frame}
+
+% Section titles are shown in at the top of the slides with the current section 
+% highlighted. Note that the number of sections determines the size of the top 
+% bar, and hence the university name and logo. If you do not add any sections 
+% they will not be visible.
+
+\section{研究背景}
+\begin{frame}{研究背景}
+	\begin{itemize}
+		\setlength\itemsep{1.2em}
+		\item 	在宏观经济学中，用于预测的时间序列的个数$N$非常大，经常远大于观测值个数$T$，即$N >> T$。这种高维问题可以用少量的潜在因子来建模，采用动态因子模型能够起到降维目的\parencite{stock2002forecasting}；
+		\item 估计动态因子模型中的参数有多种方法，如传统的主成分方法(PC)\parencite{stock2002forecasting}，以及更适用于异方差情形的广义最小二乘(GLS)\parencite{breitung2011gls}。
+	\end{itemize}
+%数据集非常大，包含了高维变量。举个例子\parencite{fan2011high}
+	%\begin{itemize}
+	%	\item 世界银行(World Bank)有40年200个国家的数据，在投资组合配置中，股票的个数成千上万，原高于样本大小。
+	%	\item 对每个地区的房价进行建模时，地区的个数可以成千上万，但样本大小仅仅240个月份（或者20年）。
+	%\end{itemize}
+\end{frame}
+
+\section{数学定义}
+
+%\begin{frame}{时间序列向量}
+%	对于$n\times 1$的时间序列向量$X^*_t$，令$X_t=X_t^*-\mu_t$，其中$X_j^*= 0,\; j\le 0$，均值$\mu_t=E(X_t^*)$。时间序列向量$X_t$遵循{\bfseries{VARMA}}表示\parencite{escribano1994cointegration}
+%	\begin{align}
+%	\phi(B)X_t=\theta_B\varepsilon_t
+%	\end{align}
+%	其中
+%	\begin{align}
+%	\phi(B)&=I-\phi_1B-\cdots-\phi_pB_p\\
+%	\theta(B)&=I-\theta_1B-\cdots-\theta_qB^q
+%	\end{align}
+%	$\phi_i, i=1,\ldots, p$和$\theta_i,i=1,\ldots, q$为$n\times n$的方阵，$B$是推移算子。
+%
+%\end{frame}
+\begin{frame}{动态因子模型}
+	令$x_{it}$为在时间$t=1,\ldots, T$第$i=1,\ldots,N$个观测值。因子模型由下式给出\parencite{breitung2011gls}
+	$$
+	x_{it}=\boldsymbol{\lambda}_i^{\prime}F_t+e_{it}
+	$$
+	其中$F_t=[f_{1t},\ldots,f_{rt}]'$是$r$维公共因子的向量，$\boldsymbol{\lambda}_i$是对应的$r$维因子载荷向量。
+	用矩阵表示，模型可写成
+	\begin{equation}
+	\mathbf X = \mathbf F\bm \Lambda^{\prime}+\mathbf e
+	\end{equation}
+
+	
+%	$y_t$为单时间序列变量，$X_t$是$N\times 1$维时间序列向量
+%	\begin{align}
+%	X_t& = Af_t + u_t\\
+%	\phi(B)f_t& = \theta(B)a_t
+%	\end{align}
+%	其中 $A$是$n\times k$的因子载荷矩阵，$f_t$是公共因子向量，$a_t$和$u_t$是不相关的零均的白噪声过程，协方差矩阵分别为$\Sigma_u$和$\Sigma_a$。
+\end{frame}
+
+
+%
+\begin{frame}{动态因子模型}
+		其中
+		\begin{itemize}
+			\item $\mathbf X=[X_1,\ldots, X_T]'$是$T\times N$的观测矩阵，行向量为$X_t'=[x_{1t}, \ldots, x_{Nt}]$；
+			\item $\mathbf e = [\mathbf e_1,\ldots,\mathbf e_T]'$是$T\times N$的特质(idiosyncratic)误差矩阵，行向量为$\mathbf e_t'=[e_{1t},\ldots, e_{Nt}]$；
+			\item $\mathbf F=[ F_1, \ldots, F_T]'$
+			\item $\bm \Lambda=[\boldsymbol{\lambda}_1,\ldots,\boldsymbol{\lambda}_N]'$
+		\end{itemize}	
+\end{frame}
+
+\begin{frame}{预测问题}
+	用时间序列向量$X_t$对单时间序列变量$y_t$进行预测。一般地，预测问题可以分两步求解\parencite{stock2002forecasting}
+	\\~\\
+	\begin{enumerate}
+		\setlength\itemsep{1em}
+		\item 根据$X_t$估计出因子$F_t$；
+		\item 估计$y_t$和因子$F_t$之间的关系。
+	\end{enumerate}
+\end{frame}
+
+%\begin{frame}{动态因子模型}
+%	，$X_t$是$N\times 1$维时间序列向量。假设$(X_t, y_{t+h})$存在因子模型表示
+%	\begin{equation}
+%	X_t=\Lambda F_t+e_t
+%	\end{equation}
+%	且
+%	\begin{equation}
+%	y_{t+h}=\beta_F'F_t+\beta_w'w_t+\varepsilon_{t+h}
+%	\end{equation}
+%	其中$e_t$为$N\times 1$维误差向量，$w_t$为$m\times 1$维观测值，$\varepsilon_{t+h}$为预测误差。已有数据为$\{y_t, X_t, w_t\}_{t=1}^T$，目标是预测$y_{T+h}$
+%\end{frame}
+
+
+\section{方法综述}
+%\begin{frame}{一般步骤}
+%	一般地，预测问题可以分为两步\parencite{stock2002forecasting}
+%	\begin{enumerate}
+%		\item 根据$X_t$估计出因子；
+%		\item 通过回归估计出响应变量和因子之间的关系。
+%	\end{enumerate}
+%\end{frame}
+%
+%\begin{frame}{N很小}
+%	一般采取三步进行估计\parencite{bibid}
+%	\begin{enumerate}
+%		\item 假设$\{y_{t+h},X_t,w_t,e_t\}$联合随机过程的参数模型，用样本数据$\{y_{t+h}, X_t,w_t\}_{t=1}^{T-h}$估计模型中的参数；
+%		\item 采用信号提取算法估计未知的因子
+%		\item 用估计好的因子来预测$y_{T+h}$
+%	\end{enumerate}
+%\end{frame}
+%\begin{frame}{N很大时的问题}
+%	需要估计的参数太多了
+%\end{frame}
+
+%\begin{frame}{主成分估计}
+%	\parencite{stock2002forecasting}提出主成分估计
+%	考虑非线性最小二乘目标函数
+%	$$
+%	V(\tilde{F},\tilde{\lambda})=(NT)^{-1}\sum_{i}\sum_t(x_{it}-\tilde{\lambda_i}\tilde{F_t})^2
+%	$$
+%	写成矩阵形式是满足$T^{-1}\mathbf{FF'}=\mathbf I_r$约束下，最小化
+%	$$
+%	\mathrm{tr}[(\mathbf{X- \boldsymbol{\Lambda} F})'(\mathbf{X- \boldsymbol{\Lambda} F})]
+%	$$
+%	最后得到$F$的主成分估计为
+%	$$
+%	\tilde{F}=X'\hat{\Lambda}/N
+%	$$
+%	其中$\hat{\Lambda}$是$X'X$的前$r$大特征值对应的特征向量。
+%\end{frame}
+%
+%
+%\begin{frame}{GLS估计}
+%	\begin{equation}
+%	S(\mathbf F,\boldsymbol\Lambda,\boldsymbol\Omega)=\mathrm{tr}[\boldsymbol{\Omega}^{-1}(\mathbf{X- \boldsymbol{\Lambda} F})'(\mathbf{X- \boldsymbol{\Lambda} F})]
+%	\end{equation}
+%\end{frame}
+
+\begin{frame}{主成分估计}
+%	\citet{stock2002forecasting}提出主成分估计因子$F_t$，并进一步对$y_t$进行预测。具体地，
+	在$T^{-1}\mathbf{FF'}=\mathbf I_r$约束下以及一定的假设条件下，最小化
+	\begin{equation}
+	S(\mathbf F,\boldsymbol{\Lambda})=\mathrm{tr}[(\mathbf{X- F\boldsymbol{\Lambda} }')'(\mathbf{X- F\boldsymbol{\Lambda} }')]
+	\end{equation}
+	得到估计
+	$$
+	\hat{\mathbf F}=\sqrt{T}\hat{\mathbf V}_r
+	$$
+	其中$\hat{\mathbf V}_r$是$\mathbf{XX'}$的前$r$个最大的特征值对应的特征向量组成的矩阵。\parencite{stock2002forecasting}
+	
+	
+\end{frame}
+\begin{frame}{GLS估计}
+	考虑异方差，提出GLS估计，对加权残差平方和进行最小化
+	\begin{equation}
+	S(\mathbf F,\boldsymbol\Lambda,\boldsymbol\Omega)=\mathrm{tr}[(\mathbf{X- F\boldsymbol{\Lambda} }')'\boldsymbol{\Omega}^{-1}(\mathbf{X- F\boldsymbol{\Lambda} }')]
+	\end{equation}
+	根据$\boldsymbol{\Omega}$的不同，衍生了不同的方法
+	\begin{enumerate}
+		\setlength\itemsep{0.5em}
+		\item $\boldsymbol{\Omega}=\mathrm{diag}[E(e_{1t}^2),\ldots,E(e_{Nt}^2)]$\parencite{choi2012efficient}
+		\item 任意阵(\cite{forni2005generalized}; \cite{choi2012efficient})
+		\item $\boldsymbol{\Omega}=\sigma^2(\mathbf I_N-\varrho\mathbf W_N)^{-1}(\mathbf I_N-\varrho\mathbf W_N')^{-1}$\parencite{ECTJ:ECTJ330}
+		\item 同时考虑异方差和自相关性\parencite{breitung2011gls}
+	\end{enumerate}
+\end{frame}
+\begin{frame}{小结}
+	\begin{enumerate}
+		\setlength\itemsep{1.5em}
+		\item 很多论文研究对象是时间序列向量$X_t$（没有响应变量$y_t$），单纯考虑根据$X_t$来估计$F_t$，如\cite{breitung2011gls}
+		\item
+		即使论文研究对象是对$y_t$进行预测，但也是先根据$X_t$估计$F_t$，再由$F_t$预测$y_t$，如\cite{stock2002forecasting}
+	\end{enumerate}
+		\vspace{0.8em}
+	\onslide<2->{\cjkhwxk 但如果我们提前用到$y_t$的信息呢？}
+\end{frame}
+\section{研究内容}
+\begin{frame}{基本想法}
+	处理高维数据时，首先根据$y_t$与$X_t$中每个时间序列的关系，提取其中与$y_t$相关性较大的时间序列构造新的时间序列向量$X_{t}^*$，对这个新的序列应用PC估计或者GLS估计。即
+		\vspace{0.8em}
+		\begin{enumerate}
+			\item {\cjkhwxk 根据$y_t$和$X_t$得到初步降维后的$X_t^*$}
+			\item 根据$X^*_t$估计出因子$F_t$；
+			\item 估计$y_t$和因子$F_t$之间的关系。
+		\end{enumerate}
+	\vspace{0.8em}
+	这个想法是受监督主成分方法(Supervised Principal Components)\parencite{bair2006prediction}的启发。
+\end{frame}
+\begin{frame}{监督主成分}
+	
+%	\parencite{bair2006prediction}提出监督主成分，其与主成分的区别时，首先对每个特征进行单变量回归，设定阈值$\theta$，选取那些系数大于阈值的特征构成降维后的矩阵，最后用降维后的矩阵进行普通的主成分。其相对主成分的优点，适用于高维数据。
+%	
+%	受监督主成分的启发，在建立动态因子模型来预测时，进行\parencite{stock2002forecasting}的主成分法前，首先预处理过滤掉多余的时间序列。
+监督主成分的一般算法如下\parencite{bair2006prediction}
+\vspace{0.5em}
+\begin{enumerate}
+	\setlength\itemsep{0.8em}
+	\item 分别计算每个特征与输出变量之间的单变量回归系数；
+	\item 从$0\le \theta_1\le\cdots\le \theta_K$中依次取阈值$\theta$
+	\begin{enumerate}[a]
+		\item 提取出原特征矩阵中单变量回归系数的绝对值大于$\theta$的特征，从新特征中取前$m$个主成分
+		\item 采用这些主成分对输出变量进行预测
+	\end{enumerate}
+	\item 通过交叉验证选取$\theta$（和$m$）
+\end{enumerate}
+\vspace{1.2em}
+\onslide<2->{\cjkhwxk 后续研究中，在第2(b)步中，尝试除PC之外的方法，如GLS。}
+\end{frame}
+
+
+\begin{frame}{研究计划}
+	\begin{enumerate}
+		\setlength\itemsep{1.2em}
+		\item 推导有监督的方法（如有监督的主成分和GLS）应用于动态因子模型的公式，并给出具体的假设条件，同时尝试讨论其渐近性质；
+		\item 通过模拟实验将之与PC估计、GLS估计进行比较；
+		\item 将方法应用于实际数据，如股票数据。
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}[t,allowframebreaks]
+	\frametitle{参考文献}
+	\printbibliography[title=参考文献]
+\end{frame}
+\begin{frame}
+	\chuhao\fontspec{LHANDW.TTF} {Thank you！}
+\end{frame}
+\end{document}
+
+
