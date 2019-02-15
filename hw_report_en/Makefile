@@ -1,6 +1,7 @@
+FILE = 'hw_biblatex_apa'
 all:
-	xelatex A8
-	biber A8
-	xelatex A8
-	xelatex A8
+	xelatex $(FILE)
+	biber $(FILE)
+	xelatex $(FILE)
+	xelatex $(FILE)
 	rm -f *.aux *.hd *.log *.out *.bcf *.run.xml *.bbl *.blg

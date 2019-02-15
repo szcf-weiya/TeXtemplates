@@ -6,7 +6,10 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{algorithmic}
+\usepackage[american]{babel}
+\usepackage{csquotes}
 \usepackage[backend=biber,citestyle=authoryear,sortcites=true,natbib,sorting=nyt,style=apa]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
 \bibliography{ref.bib}
 \addbibresource{ref.bib}
 \usepackage[
@@ -55,7 +58,7 @@
 \newenvironment{solution}
     {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
     {\end{proof}}
-\title{Homework 8 of STAT 5010}
+\title{Homework}
 \author{WANG Lijun}
 \date{\today}
 \begin{document}
@@ -63,6 +66,12 @@
 \pagestyle{fancy}
 \lhead{}
 \rhead{}
-\chead{Homework 8 of STAT 5010 (WANG Lijun)}
+\chead{Homework}
+
+\textcite{mithani2009stochastic}
+
+\parencite{padilla2018adaptive}
+
+\printbibliography
 
 \end{document}
