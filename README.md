@@ -1,6 +1,6 @@
 # TeXtemplates
 
-There are some latex templates that I used, and it is easy to create a tex file with Makefile and bib file if necessary from the avaiable templates.
+There are some latex templates that I used, and it is easy to create a tex file with Makefile (and bib file if needed) from the avaiable templates.
 
 ```bash
 # step 1: git clone the repository
@@ -9,6 +9,6 @@ git clone git@github.com:szcf-weiya/TeXtemplates.git
 echo "alias newtex='~/github/TeXtemplates/new.sh'" >> ~/.bashrc
 source ~/.bashrc
 # step 3: run at arbitrary location
-newtex template targetfilename targetfolder
+newtex templatename targetfilename targetfolder
 ```
 
