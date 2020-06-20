@@ -6,6 +6,10 @@ Convert `pdf` figures to `png` in the folder `figs`:
 ls -1 | sed -e 's/\..*$//' | xargs -t -i pdftoppm {}.pdf {} -png -singlefile
 ```
 
+## SEM
+
+![](figs/sem.png)
+
 ## Normal (I)
 
 ```tex
