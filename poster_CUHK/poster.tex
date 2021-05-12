@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{etoolbox}
+\patchcmd{\abstract}{\small}{}{}{}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{newpxtext}
+\usepackage[hidelinks,pdfauthor={YOUR NAME},pdftitle={Poster for Oral Presentation}]{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\usepackage[
+  top=2cm, bottom=2.5cm,
+  left=2.3cm, right=2.3cm,
+  headsep=3mm,
+  headheight=15pt]{geometry}
+\newcommand*{\mytitle}
+{
+  \begingroup
+  \begin{center}
+    \includegraphics[width=0.25\linewidth]{CUHK.pdf}\\[4ex]
+    {\LARGE \bfseries {The Chinese University of Hong Kong}}\\[2ex]
+    {\LARGE \bfseries {Department of Statistics}}\\[4ex]
+    {\LARGE {Oral Presentation}}\\[5ex]
+    {\large \bfseries{A Bold and Large Title}}\\[2ex]
+    {YOUR NAME}\\[2ex]
+    {Supervised by XXX}\\[10ex]
+  \end{center}
+  \endgroup
+}
+\begin{document}
+\thispagestyle{empty}
+\mytitle
+  \begin{abstract}
+	  Your abstract.
+	  
+	  Your abstract.
+	  
+	  Your abstract.
+	  
+	  Your abstract.
+	  
+	  Your abstract.
+	  
+	  Your abstract.
+	  
+	  Your abstract.
+	   
+	  Your abstract.
+	  
+	  Your abstract.
+  \end{abstract}
+  \vskip 0.3in
+  \begin{itemize}[label=]
+    \item Date: June 22, 2020 (Monday)
+    \item Time: 9:30am - 10:30am
+    \item Link: \url{https://cuhk.zoom.us/j/.................}
+    \item Meeting ID: XXX
+    \item Password: XXX
+  \end{itemize}
+  \centering{ALL INTERESTED ARE WELCOME!}
+\end{document}
