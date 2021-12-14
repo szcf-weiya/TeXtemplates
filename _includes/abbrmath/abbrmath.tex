@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{amsthm, amsmath, amssymb}
+%% math operator
+% https://tex.stackexchange.com/questions/5223/command-for-argmin-or-argmax
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+%% custom command [prob]
+\newcommand\lri{\limits_{n\rightarrow\infty}}
+\newcommand\pto{\overset{p}{\rightarrow}}
+\newcommand\dto{\overset{d}{\rightarrow}}
+\newcommand\asto{\overset{\mathrm{a.s.}}{\rightarrow}}
+\newcommand\ltwoto{\overset{L_2}{\rightarrow}}
+\newcommand\io{\mathrm{i.o.}}
+\newcommand\as{\mathrm{a.s.}}
+
+%% mathcal
+%% $ for x in {A..Z}; do echo "\newcommand\c$x{{\mathcal $x}"; done
+\newcommand\cA{{\mathcal A}}
+\newcommand\cB{{\mathcal B}}
+\newcommand\cC{{\mathcal C}}
+\newcommand\cD{{\mathcal D}}
+\newcommand\cE{{\mathcal E}}
+\newcommand\cF{{\mathcal F}}
+\newcommand\cG{{\mathcal G}}
+\newcommand\cH{{\mathcal H}}
+\newcommand\cI{{\mathcal I}}
+\newcommand\cJ{{\mathcal J}}
+\newcommand\cK{{\mathcal K}}
+\newcommand\cL{{\mathcal L}}
+\newcommand\cM{{\mathcal M}}
+\newcommand\cN{{\mathcal N}}
+\newcommand\cO{{\mathcal O}}
+\newcommand\cP{{\mathcal P}}
+\newcommand\cQ{{\mathcal Q}}
+\newcommand\cR{{\mathcal R}}
+\newcommand\cS{{\mathcal S}}
+\newcommand\cT{{\mathcal T}}
+\newcommand\cU{{\mathcal U}}
+\newcommand\cV{{\mathcal V}}
+\newcommand\cW{{\mathcal W}}
+\newcommand\cX{{\mathcal X}}
+\newcommand\cY{{\mathcal Y}}
+\newcommand\cZ{{\mathcal Z}}
+
+%% mathbf
+%% $ for x in {A..Z}; do echo "\newcommand\b$x{{\mathbf $x}}"; done
+\newcommand\bA{{\mathbf A}}
+\newcommand\bB{{\mathbf B}}
+\newcommand\bC{{\mathbf C}}
+\newcommand\bD{{\mathbf D}}
+\newcommand\bE{{\mathbf E}}
+\newcommand\bF{{\mathbf F}}
+\newcommand\bG{{\mathbf G}}
+\newcommand\bH{{\mathbf H}}
+\newcommand\bI{{\mathbf I}}
+\newcommand\bJ{{\mathbf J}}
+\newcommand\bK{{\mathbf K}}
+\newcommand\bL{{\mathbf L}}
+\newcommand\bM{{\mathbf M}}
+\newcommand\bN{{\mathbf N}}
+\newcommand\bO{{\mathbf O}}
+\newcommand\bP{{\mathbf P}}
+\newcommand\bQ{{\mathbf Q}}
+\newcommand\bR{{\mathbf R}}
+\newcommand\bS{{\mathbf S}}
+\newcommand\bT{{\mathbf T}}
+\newcommand\bU{{\mathbf U}}
+\newcommand\bV{{\mathbf V}}
+\newcommand\bW{{\mathbf W}}
+\newcommand\bX{{\mathbf X}}
+\newcommand\bY{{\mathbf Y}}
+\newcommand\bZ{{\mathbf Z}}
+
+\begin{document}
+    \section{normal}
+    $$
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    $$
+    \section{mathrm}
+    
+    \section{mathcal}
+    % $ for x in {A..Z}; do echo -n "\c$x"; done
+    $$
+    \cA\cB\cC\cD\cE\cF\cG\cH\cI\cJ\cK\cL\cM\cN\cO\cP\cQ\cR\cS\cT\cU\cV\cW\cX\cY\cZ
+    $$
+    \section{mathbf}
+    $$
+    \bA\bB\bC\bD\bE\bF\bG\bH\bI\bJ\bK\bL\bM\bN\bO\bP\bQ\bR\bS\bT\bU\bV\bW\bX\bY\bZ
+    $$
+\end{document}
