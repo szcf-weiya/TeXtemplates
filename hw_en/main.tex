@@ -1,0 +1,55 @@
+%% Features
+% 1. APA bibliography style
+% 2. newpxtext font style
+% 
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{array,longtable}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{algorithmic}
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber,citestyle=authoryear,sortcites=true,natbib,sorting=nyt,style=apa]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\bibliography{ref.bib}
+\addbibresource{ref.bib}
+\usepackage[
+  top=2.5cm, bottom=2.5cm,
+  left=2.6cm, right=2.6cm,
+  headsep=3mm,
+  headheight=15pt]{geometry}
+\usepackage{newpxtext}
+%\usepackage{newpxmath}
+\input{../_includes/abbrmath/_abbrmath.tex}
+\input{../_includes/_hw.tex}
+
+\newcommand\textred[1]{{\color{red}#1}}
+\newcommand\vs{\quad\text{versus}\quad}
+
+\newcommand\eqskip{12pt}
+
+\title{Homework}
+\author{weiya}
+\date{\today}
+\begin{document}
+\maketitle
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+\chead{Homework}
+
+\section{Prove $a^2 + b^2 \ge 2ab$}
+
+\begin{solution}
+  $$
+  a^2 + b^2 - 2ab = (a - b)^2 \ge 0\,.
+  $$
+  More proofs see \textcite{kkkWhy2ab2017}.
+\end{solution}
+
+\printbibliography
+
+\end{document}

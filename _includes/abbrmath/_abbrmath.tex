@@ -1,0 +1,147 @@
+\usepackage{amsthm, amsmath, amssymb}
+%% math operator
+% https://tex.stackexchange.com/questions/5223/command-for-argmin-or-argmax
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\tr}{tr}
+\DeclareMathOperator*{\trace}{tr}
+\DeclareMathOperator*{\diag}{diag}
+\DeclareMathOperator*{\Cov}{Cov}
+\DeclareMathOperator*{\rank}{rank}
+\DeclareMathOperator*{\sgn}{sgn}
+
+
+%% custom command [prob]
+\newcommand\lri{\limits_{n\rightarrow\infty}}
+\newcommand\pto{\overset{p}{\rightarrow}}
+\newcommand\dto{\overset{d}{\rightarrow}}
+\newcommand\asto{\overset{\mathrm{a.s.}}{\rightarrow}}
+\newcommand\ltwoto{\overset{L_2}{\rightarrow}}
+\newcommand\io{\mathrm{i.o.}}
+\newcommand\as{\mathrm{a.s.}}
+\newcommand\RSS{\mathrm{RSS}}
+\newcommand\IR{\mathrm{I\!R}}
+
+%% mathcal
+%% $ for x in {A..Z}; do echo "\newcommand\c$x{{\mathcal $x}"; done
+\newcommand\cA{{\mathcal A}}
+\newcommand\cB{{\mathcal B}}
+\newcommand\cC{{\mathcal C}}
+\newcommand\cD{{\mathcal D}}
+\newcommand\cE{{\mathcal E}}
+\newcommand\cF{{\mathcal F}}
+\newcommand\cG{{\mathcal G}}
+\newcommand\cH{{\mathcal H}}
+\newcommand\cI{{\mathcal I}}
+\newcommand\cJ{{\mathcal J}}
+\newcommand\cK{{\mathcal K}}
+\newcommand\cL{{\mathcal L}}
+\newcommand\cM{{\mathcal M}}
+\newcommand\cN{{\mathcal N}}
+\newcommand\cO{{\mathcal O}}
+\newcommand\cP{{\mathcal P}}
+\newcommand\cQ{{\mathcal Q}}
+\newcommand\cR{{\mathcal R}}
+\newcommand\cS{{\mathcal S}}
+\newcommand\cT{{\mathcal T}}
+\newcommand\cU{{\mathcal U}}
+\newcommand\cV{{\mathcal V}}
+\newcommand\cW{{\mathcal W}}
+\newcommand\cX{{\mathcal X}}
+\newcommand\cY{{\mathcal Y}}
+\newcommand\cZ{{\mathcal Z}}
+
+%% mathbf
+%% $ for x in {A..Z}; do echo "\newcommand\b$x{{\mathbf $x}}"; done
+\newcommand\bA{{\mathbf A}}
+\newcommand\bB{{\mathbf B}}
+\newcommand\bC{{\mathbf C}}
+\newcommand\bD{{\mathbf D}}
+\newcommand\bE{{\mathbf E}}
+\newcommand\bF{{\mathbf F}}
+\newcommand\bG{{\mathbf G}}
+\newcommand\bH{{\mathbf H}}
+\newcommand\bI{{\mathbf I}}
+\newcommand\bJ{{\mathbf J}}
+\newcommand\bK{{\mathbf K}}
+\newcommand\bL{{\mathbf L}}
+\newcommand\bM{{\mathbf M}}
+\newcommand\bN{{\mathbf N}}
+\newcommand\bO{{\mathbf O}}
+\newcommand\bP{{\mathbf P}}
+\newcommand\bQ{{\mathbf Q}}
+\newcommand\bR{{\mathbf R}}
+\newcommand\bS{{\mathbf S}}
+\newcommand\bT{{\mathbf T}}
+\newcommand\bU{{\mathbf U}}
+\newcommand\bV{{\mathbf V}}
+\newcommand\bW{{\mathbf W}}
+\newcommand\bX{{\mathbf X}}
+\newcommand\bY{{\mathbf Y}}
+\newcommand\bZ{{\mathbf Z}}
+
+% $ for x in {a..z}; do echo "\newcommand\bf$x{{\mathbf $x}}"; done
+\newcommand\bfa{{\mathbf a}}
+\newcommand\bfb{{\mathbf b}}
+\newcommand\bfc{{\mathbf c}}
+\newcommand\bfd{{\mathbf d}}
+\newcommand\bfe{{\mathbf e}}
+\newcommand\bff{{\mathbf f}}
+\newcommand\bfg{{\mathbf g}}
+\newcommand\bfh{{\mathbf h}}
+\newcommand\bfi{{\mathbf i}}
+\newcommand\bfj{{\mathbf j}}
+\newcommand\bfk{{\mathbf k}}
+\newcommand\bfl{{\mathbf l}}
+\newcommand\bfm{{\mathbf m}}
+\newcommand\bfn{{\mathbf n}}
+\newcommand\bfo{{\mathbf o}}
+\newcommand\bfp{{\mathbf p}}
+\newcommand\bfq{{\mathbf q}}
+\newcommand\bfr{{\mathbf r}}
+\newcommand\bfs{{\mathbf s}}
+\newcommand\bft{{\mathbf t}}
+\newcommand\bfu{{\mathbf u}}
+\newcommand\bfv{{\mathbf v}}
+\newcommand\bfw{{\mathbf w}}
+\newcommand\bfx{{\mathbf x}}
+\newcommand\bfy{{\mathbf y}}
+\newcommand\bfz{{\mathbf z}}
+
+%% mathbb
+%% for x in {A..Z}; do echo "\newcommand\bb$x{{\mathbb $x}}"; done
+\newcommand\bbA{{\mathbb A}}
+\newcommand\bbB{{\mathbb B}}
+\newcommand\bbC{{\mathbb C}}
+\newcommand\bbD{{\mathbb D}}
+\newcommand\bbE{{\mathbb E}}
+\newcommand\bbF{{\mathbb F}}
+\newcommand\bbG{{\mathbb G}}
+\newcommand\bbH{{\mathbb H}}
+\newcommand\bbI{{\mathbb I}}
+\newcommand\bbJ{{\mathbb J}}
+\newcommand\bbK{{\mathbb K}}
+\newcommand\bbL{{\mathbb L}}
+\newcommand\bbM{{\mathbb M}}
+\newcommand\bbN{{\mathbb N}}
+\newcommand\bbO{{\mathbb O}}
+\newcommand\bbP{{\mathbb P}}
+\newcommand\bbQ{{\mathbb Q}}
+\newcommand\bbR{{\mathbb R}}
+\newcommand\bbS{{\mathbb S}}
+\newcommand\bbT{{\mathbb T}}
+\newcommand\bbU{{\mathbb U}}
+\newcommand\bbV{{\mathbb V}}
+\newcommand\bbW{{\mathbb W}}
+\newcommand\bbX{{\mathbb X}}
+\newcommand\bbY{{\mathbb Y}}
+\newcommand\bbZ{{\mathbb Z}}
+
+%% theorem
+\newtheorem{definition}{Definition}
+\newtheorem{fact}{Fact}
+\newtheorem{lem}{Lemma}
+\newtheorem{coro}{Corollary}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{remark}{Remark}

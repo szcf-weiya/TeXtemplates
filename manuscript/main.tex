@@ -1,0 +1,52 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{array,longtable}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{algorithmic}
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage{subcaption}
+\usepackage[backend=biber,citestyle=authoryear,sortcites=true,natbib,sorting=nyt,style=apa]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\bibliography{ref.bib}
+\addbibresource{ref.bib}
+\usepackage[
+  top=2.5cm, bottom=2.5cm,
+  left=2.6cm, right=2.6cm,
+  headsep=3mm,
+  headheight=15pt]{geometry}
+\usepackage{newpxtext}
+%\usepackage{newpxmath}
+\input{../_includes/abbrmath/_abbrmath.tex}
+\usepackage[affil-it]{authblk}
+\title{Manuscript}
+% \author{weiya}
+\author[1]{weiya%
+  \thanks{Email: \texttt{XX}}
+}
+\affil[1]{Department of Statistics, XX}
+\author[1]{co-author%
+  \thanks{Email: \texttt{XX}}
+}
+\author[2]{corresponding author%
+\thanks{Email: \texttt{XX}}
+}
+\affil[2]{Department of Statistics, XX}
+\date{\today}
+\begin{document}
+\maketitle
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+\chead{Manuscript}
+
+\maketitle
+
+\section{Introduction}
+
+\printbibliography
+
+\end{document}
