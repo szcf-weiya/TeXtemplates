@@ -9,6 +9,8 @@
 \usepackage[american]{babel}
 \usepackage{csquotes}
 \usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{booktabs}
 \usepackage[backend=biber,citestyle=authoryear,sortcites=true,natbib,sorting=nyt,style=apa]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
 \bibliography{ref.bib}
@@ -46,6 +48,26 @@
 \maketitle
 
 \section{Introduction}
+
+\begin{table}[H]
+    \centering
+    \resizebox{1.0\textwidth}{!}{%
+        \input{../../xfun.jl/test/tables/table.tex}
+    }
+    \caption{\texttt{https://github.com/szcf-weiya/xfun.jl/blob/master/test/tables/table.tex}.}
+    \label{tab:test}
+\end{table}
+
+\section{Math Formulas}
+
+\begin{itemize}
+    \item \verb#\mid# vs \verb#\middle|#: \textit{https://tex.stackexchange.com/questions/181091/middle-too-big}
+    $$
+    \bbE\left[\frac{f(X)}{g(X)}\mid X\right] \qquad \bbE\left[\frac{f(X)}{g(X)}\middle| X\right]
+    $$
+\end{itemize}
+
+
 
 \printbibliography
 

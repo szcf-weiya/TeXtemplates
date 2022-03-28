@@ -23,3 +23,6 @@ hw_en:: # https://stackoverflow.com/questions/2145590/what-is-the-purpose-of-pho
 manuscript::
 	cd $@
 	$(mk2)
+
+clean:
+	rm -f */*.aux */*.hd */*.log */*.out */*.bcf */*.run.xml */*.bbl */*.blg */*.fls */*.synctex.gz */*.fdb_latexmk
