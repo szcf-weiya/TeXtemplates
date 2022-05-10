@@ -1,4 +1,5 @@
 \usepackage{amsthm, amsmath, amssymb}
+\usepackage{ifthen}
 %% math operator
 % https://tex.stackexchange.com/questions/5223/command-for-argmin-or-argmax
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -137,9 +138,13 @@
 \newcommand\bbY{{\mathbb Y}}
 \newcommand\bbZ{{\mathbb Z}}
 
+%% Greek
+\newcommand{\bOmega}{\boldsymbol{\Omega}}
+\newcommand{\one}{\boldsymbol{1}}
+
 %% theorem
-\newtheorem{definition}{Definition}
-\newtheorem{fact}{Fact}
+\ifthenelse{\isundefined{\definition}}{\newtheorem{definition}{Definition}}{}
+\ifthenelse{\isundefined{\fact}}{\newtheorem{fact}{Fact}}{}
 \newtheorem{lem}{Lemma}
 \newtheorem{coro}{Corollary}
 \newtheorem{prop}{Proposition}
