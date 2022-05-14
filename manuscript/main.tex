@@ -11,6 +11,14 @@
 \usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{booktabs}
+\usepackage{soul}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    }
 \usepackage[backend=biber,citestyle=authoryear,sortcites=true,natbib,sorting=nyt,style=apa]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
 \bibliography{ref.bib}
@@ -68,6 +76,11 @@
 \end{itemize}
 
 
+\section{Tips}
+
+\begin{itemize}
+  \item strikethrough text: \st{hello, world!}, required package `soul'. See also: \url{https://tex.stackexchange.com/questions/23711/strikethrough-text}
+\end{itemize}
 
 \printbibliography
 

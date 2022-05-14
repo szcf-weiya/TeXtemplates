@@ -1,5 +1,10 @@
 # TeXtemplates
 
+## Abbreviation Math Symbols
+
+- bold upper case symbols: `\mathbf{A}` -> `\bA`, `\boldsymbol{\Omega}` -> `\bOmega`
+- bold lower case symbols: `\mathbf{a}` -> `\bfa`
+
 ## Run Examples
 
 
