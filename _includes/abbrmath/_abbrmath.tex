@@ -24,7 +24,9 @@
 \newcommand\io{\mathrm{i.o.}}
 \newcommand\as{\mathrm{a.s.}}
 \newcommand\RSS{\mathrm{RSS}}
+\newcommand\logit{\mathrm{logit}}
 \newcommand\IR{\mathrm{I\!R}}
+\newcommand\subto{\mathrm{s.t.}}
 
 %% mathcal
 %% $ for x in {A..Z}; do echo "\newcommand\c$x{{\mathcal $x}"; done
@@ -170,6 +172,7 @@
 
 %% Greek
 \newcommand{\bOmega}{\boldsymbol{\Omega}}
+\newcommand{\bSigma}{\boldsymbol{\Sigma}}
 \newcommand{\bfOmega}{\boldsymbol{\Omega}}
 \newcommand{\one}{\boldsymbol{1}}
 \newcommand\zero{\boldsymbol{0}}
@@ -177,13 +180,12 @@
 %% theorem
 \ifthenelse{\isundefined{\definition}}{\newtheorem{definition}{Definition}}{}
 \ifthenelse{\isundefined{\fact}}{\newtheorem{fact}{Fact}}{}
+\ifthenelse{\isundefined{\theorem}}{\newtheorem{theorem}{Theorem}}{}
+\ifthenelse{\isundefined{\proposition}}{\newtheorem{proposition}{Proposition}}{}
+\ifthenelse{\isundefined{\corollary}}{\newtheorem{corollary}{Corollary}}{}
+\ifthenelse{\isundefined{\lemma}}{\newtheorem{lemma}{Lemma}}{}
 \newtheorem{lem}{Lemma}
 \newtheorem{coro}{Corollary}
 \newtheorem{prop}{Proposition}
 \newtheorem{thm}{Theorem}
 \newtheorem{remark}{Remark}
-\newtheorem{theorem}{Theorem}
-\newtheorem{proposition}{Proposition}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-
