@@ -1,0 +1,35 @@
+\documentclass[tikz,10pt]{standalone}
+% shapes.geometric: ellipse
+\usetikzlibrary{positioning,fit,shapes.geometric,backgrounds}
+\usepackage[utf8]{inputenc}
+\usepackage{xeCJK}
+\setCJKmainfont{LXGW WenKai}
+% \setCJKmainfont{Smiley Sans}
+%\setCJKmainfont{Adobe Kaiti Std}
+% \setCJKmainfont{Adobe Kaiti Std}
+\setCJKsansfont{Smiley Sans}
+\begin{document}
+\begin{tikzpicture}
+    [
+        house/.style = {draw, text centered, minimum width=8em, minimum height=6em, align=center},
+        tree/.style = {draw, text centered, circle}
+    ]
+    \node [house] (no1) {一号\\ \tiny{钱默吟夫妇}\\ \tiny{大少爷夫妇；二少爷}};
+    \node [house, below right=-1.5cm and 0cm of no1] (no3) {三号\\ \tiny{冠晓荷，冠太太，尤桐芳}\\ \tiny{高第，招第}};
+    \node [house, right=0cm of no3] (no5) {五号\\ \tiny{祁老人}；\tiny{天佑，天佑太太}\\\tiny{瑞宣，韵梅；瑞丰夫妇；瑞全}\\\tiny{小顺儿，妞子}};
+    % \node [house, below=of no5] (temple) {\Large\textsf{护国寺}};
+    \node [tree, above=of no3] (tree1) {槐树};
+    \node [tree, right=0cm of tree1] (tree2) {槐树};
+    \node [house, above=of tree1] (no4) {四号（小杂院）\\ \tiny{剃头匠孙七夫妇}\\ \tiny{马老寡妇及其外孙} \\ \tiny{拉洋车的小崔} };
+    \node [house, below left=-1.5cm and 0cm of no4] (no2) {二号\\ \tiny{李四爷，李四妈}};
+    \node [house, minimum width=20em, below right=-1.5cm and 0cm of no4, label=below right:\textsf{葫芦腰}] (no7) {七号（大杂院）};
+    \node [house, above right=0cm and -1cm of no5] (no6) {六号（小杂院）\\ \tiny{英国府仆人丁约翰}\\ \tiny{棚匠刘师傅夫妇}\\ \tiny{唱戏的小文夫妇}};
+    \begin{scope}[on background layer]
+        \node [fill=blue!20, inner sep=-5pt, ellipse, fit=(no1) (no2) (no3) (no4) (no6), at=(tree2), label={[blue!50,centered]above right:\LARGE\textsf{葫芦胸}}] (chest) {};
+        \node [fill=red!20, circle, right=-2cm of chest, minimum size=35em, label={[red!50,centered]above left:\LARGE\textsf{葫芦肚}}] (body) {};
+        \node [fill=gray!20, minimum height=1em, minimum width=5em, left=0cm of chest] (neck) {\small\textsf{葫芦嘴和脖子}};
+        \node [fill=gray!20, left=0cm of neck, minimum width=5em, minimum height=50em, align=center] {\LARGE\textsf{西}\\\LARGE\textsf{大}\\\LARGE\textsf{街}};
+        \node [fill=gray, below=of no5, minimum width=30em, minimum height=10em] (temple) {\LARGE\textsf{护国寺}};
+    \end{scope}
+\end{tikzpicture}
+\end{document}

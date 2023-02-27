@@ -9,3 +9,4 @@
 *.run.xml
 *.blg
 external/
+*.xdv
